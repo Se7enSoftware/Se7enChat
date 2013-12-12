@@ -14,7 +14,9 @@ class Autoloader
     {
         spl_autoload_register(function($className)
         {
-            require $this->projectRoot . str_replace('\\', '/', $className . '.php');
+            if (preg_match('/^Se7enChat/', $className)) {
+                require $this->projectRoot . str_replace('\\', '/', $className . '.php');
+            }
         });
     }
 }
