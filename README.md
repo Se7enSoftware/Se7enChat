@@ -1,7 +1,7 @@
 Se7enChat
 ======
 
-[![Build Status](https://travis-ci.org/Se7enChat/Se7enChat.png)](https://travis-ci.org/Se7enChat/Se7enChat])
+[![Build Status](https://travis-ci.org/Se7enChat/Se7enChat.png)](https://travis-ci.org/Se7enChat/Se7enChat)
 
 Se7enChat is a web-based chat written from the ground up with good software design in mind. Our goals are to keep the code base clean and well tested with frequent refactoring, as well as provide a great user experience with modern technologies like HTML5 and CSS3.
 
