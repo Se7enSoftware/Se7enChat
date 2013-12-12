@@ -11,7 +11,4 @@
             <directory suffix="Test.php">.</directory>
         </testsuite>
     </testsuites>
-    <logging>
-        <log type="testdox-text" target="logfile.txt" />
-    </logging>
 </phpunit>

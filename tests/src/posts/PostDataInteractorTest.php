@@ -1,17 +1,16 @@
 <?php
 namespace Se7enChat\tests\src\posts;
-use Se7enChat\src\posts\DataInterface;
-use Se7enChat\src\posts\DataInteractor;
+use Se7enChat\src\posts\PostDataInteractor;
 use Se7enChat\data\test\PostData;
 use Se7enChat\tests\helpers\PostHelper;
 
-class DataInteractorTest extends \PHPUnit_Framework_TestCase
+class PostDataInteractorTest extends \PHPUnit_Framework_TestCase
 {
     private $dataInteractor;
 
     public function setUp()
     {
-        $this->dataInteractor = new DataInteractor(new PostData);
+        $this->dataInteractor = new PostDataInteractor(new PostData);
     }
 
     public function testCanSavePost()
