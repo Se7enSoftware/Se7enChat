@@ -19,9 +19,8 @@ class RoomTest extends \PHPUnit_Framework_TestCase
 
     public function testPostCollectionCanBeEmptyArray()
     {
-        $this->assertTrue(
-            is_array($this->room->getPosts()) && empty($this->room->getPosts())
-        );
+        $posts = $this->room->getPosts;
+        $this->assertTrue(is_array($posts) && count($posts) > 0);
     }
 
     public function testPostCollectionReturnsArrayOfPostObjects()
