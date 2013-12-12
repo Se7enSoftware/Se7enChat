@@ -1,9 +1,9 @@
 <?php
 namespace Se7enChat\data\test;
-use Se7enChat\src\posts\DataInterface;
+use Se7enChat\src\posts\PostDataInterface;
 use Se7enChat\src\posts\Post;
 
-class PostData implements DataInterface
+class PostData implements PostDataInterface
 {
     public function savePost(Post $post)
     {

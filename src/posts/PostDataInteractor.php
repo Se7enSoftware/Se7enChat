@@ -23,7 +23,7 @@ class PostDataInteractor
 {
     private $dataLayer;
 
-    public function __construct(DataInterface $dataLayer)
+    public function __construct(PostDataInterface $dataLayer)
     {
         $this->dataLayer = $dataLayer;
     }

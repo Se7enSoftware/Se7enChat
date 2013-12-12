@@ -1,7 +1,7 @@
 <?php
 namespace Se7enChat\src\posts;
 
-interface DataInterface
+interface PostDataInterface
 {
     public function savePost(Post $post);
 
