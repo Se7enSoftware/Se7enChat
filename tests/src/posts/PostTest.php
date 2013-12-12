@@ -28,4 +28,11 @@ class PostTest extends \PHPUnit_Framework_TestCase
             is_int($this->post->getId())
         );
     }
+
+    public function testPostBelongsToRoom()
+    {
+        $this->assertTrue(
+            is_int($this->post->getRoomId()) && $this->post->getRoomId() > 0
+        );
+    }
 }

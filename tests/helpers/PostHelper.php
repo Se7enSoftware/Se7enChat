@@ -7,6 +7,6 @@ class PostHelper
 {
     public static function createPostObject($id)
     {
-        return new Post($id, UserHelper::createUserObject(), 'messge text');
+        return new Post($id, 1, UserHelper::createUserObject(), 'messge text');
     }
 }

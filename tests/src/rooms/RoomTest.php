@@ -9,7 +9,8 @@ class RoomTest extends \PHPUnit_Framework_TestCase
 
     public function setUp()
     {
-        $this->room = new Room('room name');
+        $this->room = new Room(1, 'room name');
+        $this->populatePostArray($this->room);
     }
 
     public function testRoomHasName()
@@ -19,16 +20,14 @@ class RoomTest extends \PHPUnit_Framework_TestCase
 
     public function testPostCollectionCanBeEmptyArray()
     {
+        $this->room->truncatePosts();
         $posts = $this->room->getPosts();
         $this->assertTrue(is_array($posts) && count($posts) == 0);
     }
 
     public function testPostCollectionReturnsArrayOfPostObjects()
     {
-        $room = new Room('name');
-        $this->populatePostArray($room);
-        $posts = $room->getPosts();
-
+        $posts = $this->room->getPosts();
         foreach ($posts as $post) {
             $this->assertInstanceOf('Se7enChat\src\posts\Post', $post);
         }
@@ -36,19 +35,13 @@ class RoomTest extends \PHPUnit_Framework_TestCase
 
     public function testCanGetPostById()
     {
-        $room = new Room('name');
-        $this->populatePostArray($room);
-
-        $this->assertEquals(2, $room->getPostById(2)->getId());
+        $this->assertEquals(2, $this->room->getPostById(2)->getId());
     }
 
     public function testCanTruncatePostsFromRoom()
     {
-        $room = new Room('name');
-        $this->populatePostArray($room);
-        $room->truncatePosts();
-
-        $this->assertEmpty($room->getPosts());
+        $this->room->truncatePosts();
+        $this->assertEmpty($this->room->getPosts());
     }
 
     private function populatePostArray(Room $room)
