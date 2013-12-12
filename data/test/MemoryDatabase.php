@@ -11,7 +11,7 @@ class MemoryDatabase
         return true;
     }
 
-    public function getByName($name)
+    public static function getByName($name)
     {
         return self::$data[$name];
     }
