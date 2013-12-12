@@ -32,6 +32,6 @@ class RoomDataInteractor
 
     public function createRoomObject($id)
     {
-        return new Room(3, 'name');
+        return new Room($id, $this->getRoomName($id));
     }
 }
