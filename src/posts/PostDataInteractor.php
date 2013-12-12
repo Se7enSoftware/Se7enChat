@@ -43,4 +43,9 @@ class PostDataInteractor
     {
         return $this->dataLayer->deletePost($id);
     }
+
+    public function getNewPostsAfter($id)
+    {
+        return $this->dataLayer->getPostsWithIdGreaterThan($id);
+    }
 }

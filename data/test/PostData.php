@@ -19,4 +19,22 @@ class PostData implements PostDataInterface
     {
         return MemoryDatabase::getByName('post_' . $id);
     }
+
+    public function getPostsWithIdGreaterThan($id)
+    {
+        return array(
+            array(
+                'id' =>     2,
+                'roomId' => 1,
+                'userId' => 1,
+                'text' =>   'text'
+            ),
+            array(
+                'id' =>     2,
+                'roomId' => 1,
+                'userId' => 1,
+                'text' =>   'text'
+            )
+        );
+    }
 }

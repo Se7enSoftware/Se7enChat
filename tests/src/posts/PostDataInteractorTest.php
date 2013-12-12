@@ -35,4 +35,15 @@ class PostDataInteractorTest extends \PHPUnit_Framework_TestCase
             'Se7enChat\src\posts\Post',
             $this->dataInteractor->getPostById(1));
     }
+
+    public function testCanGetPostsDataWithIdGreaterThanNumber()
+    {
+        $posts = $this->dataInteractor->getNewPostsAfter(1);
+        foreach ($posts as $post) {
+            $this->assertNotEmpty($post['id']);
+            $this->assertNotEmpty($post['roomId']);
+            $this->assertNotEmpty($post['userId']);
+            $this->assertNotEmpty($post['text']);
+        }
+    }
 }
