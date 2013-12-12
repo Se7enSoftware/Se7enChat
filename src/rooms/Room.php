@@ -18,6 +18,11 @@ class Room
         return $this->name;
     }
 
+    public function getId()
+    {
+        return $this->id;
+    }
+
     public function addPost($post)
     {
         $this->posts[$post->getId()] = $post;

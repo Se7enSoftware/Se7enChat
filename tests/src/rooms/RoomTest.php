@@ -18,6 +18,13 @@ class RoomTest extends \PHPUnit_Framework_TestCase
         $this->assertNotEmpty($this->room->getName());
     }
 
+    public function testRoomCanGetId()
+    {
+        $this->assertTrue(
+            is_int($this->room->getId())
+        );
+    }
+
     public function testPostCollectionCanBeEmptyArray()
     {
         $this->room->truncatePosts();
