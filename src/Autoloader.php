@@ -12,11 +12,15 @@ class Autoloader
 
     public function load()
     {
-        spl_autoload_register(function($className)
-        {
-            if (preg_match('/^Se7enChat/', $className)) {
-                require $this->projectRoot . str_replace('\\', '/', $className . '.php');
-            }
-        });
+        spl_autoload_register(array($this, 'requireFile'));
+    }
+
+    private function requireFile($className)
+    {
+        $path = sprintf('%s%s.php',
+            $this->projectRoot, str_replace('\\', '/', $className));
+        if (preg_match('/^Se7enChat/', $className)) {
+            require $path;
+        }
     }
 }
