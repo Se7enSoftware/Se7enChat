@@ -1,4 +1,4 @@
-Se7enChat\tests\src\posts\DataHelper
+Se7enChat\tests\src\posts\DataInteractor
  [x] Can save post
  [x] Can delete post
  [x] Can get post by id

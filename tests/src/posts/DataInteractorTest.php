@@ -5,7 +5,7 @@ use Se7enChat\src\posts\DataInteractor;
 use Se7enChat\data\test\PostData;
 use Se7enChat\tests\helpers\PostHelper;
 
-class DataHelperTest extends \PHPUnit_Framework_TestCase
+class DataInteractorTest extends \PHPUnit_Framework_TestCase
 {
     private $dataInteractor;
 
