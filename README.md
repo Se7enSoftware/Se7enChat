@@ -23,6 +23,19 @@ What are some planned features?
 - Responsive theme.
 - Semi-instant server feedback via polling.
 
+Installation
+======
+
+To install Se7enChat, all you have to do is clone the repository from [GitHub](https://github.com/Se7enChat/Se7enChat.git), move into the Se7enChat directory, then run composer to install in the the required dependencies. All together it should look like this.
+
+```
+$ git clone https://github.com/Se7enChat/Se7enChat.git
+$ cd Se7enChat
+$ composer install
+```
+
+More information on Composer can be found at the "Getting Started" page of the official website, [here](http://getcomposer.org/doc/00-intro.md).
+
 Contributing
 ======
 
