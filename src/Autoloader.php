@@ -12,6 +12,9 @@ class Autoloader
 
     public function load()
     {
+        // Load the libraries included by Composer.
+        require __DIR__ . '/../vendor/autoload.php';
+
         spl_autoload_register(array($this, 'requireFile'));
     }
 
