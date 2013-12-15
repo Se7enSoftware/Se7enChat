@@ -22,7 +22,7 @@ class Autoloader
     {
         $path = sprintf('%s%s.php',
             $this->projectRoot, str_replace('\\', '/', $className));
-        if (preg_match('/^Se7enChat/', $className)) {
+        if (preg_match('/^Se7enChat/', $className) && !class_exists($className)) {
             require $path;
         }
     }
