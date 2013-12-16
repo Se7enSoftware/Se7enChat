@@ -13,6 +13,11 @@ class PostDataInteractorTest extends \PHPUnit_Framework_TestCase
         $this->dataInteractor = new PostDataInteractor(new PostData);
     }
 
+    public function tearDown()
+    {
+        unset($this->dataInteractor);
+    }
+
     public function testCanSavePost()
     {
         $saved = $this->dataInteractor->savePost(

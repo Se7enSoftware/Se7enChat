@@ -16,6 +16,12 @@ class RoomDataInteractorTest extends \PHPUnit_Framework_TestCase
         $this->interactor = new RoomDataInteractor(new RoomData());
     }
 
+    public function tearDown()
+    {
+        unset($this->room);
+        unset($this->interactor);
+    }
+
     public function testCanDeleteAllPostsBelongingToRoom()
     {
         $this->assertTrue(

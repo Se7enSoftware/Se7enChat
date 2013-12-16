@@ -13,6 +13,11 @@ class RoomTest extends \PHPUnit_Framework_TestCase
         $this->populatePostArray($this->room);
     }
 
+    public function tearDown()
+    {
+        unset($this->room);
+    }
+
     public function testRoomHasName()
     {
         $this->assertNotEmpty($this->room->getName());

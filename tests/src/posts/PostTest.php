@@ -12,6 +12,11 @@ class PostTest extends \PHPUnit_Framework_TestCase
         $this->post = PostHelper::createPostObject(1);
     }
 
+    public function tearDown()
+    {
+        unset($this->post);
+    }
+
     public function testHasText()
     {
         $this->assertNotEmpty($this->post->getText());

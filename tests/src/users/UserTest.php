@@ -11,6 +11,11 @@ class UserTest extends \PHPUnit_Framework_TestCase
         $this->user = UserHelper::createUserObject();
     }
 
+    public function tearDown()
+    {
+        unset($this->user);
+    }
+
     public function testCanGetName()
     {
         $this->assertNotEmpty($this->user->getName());

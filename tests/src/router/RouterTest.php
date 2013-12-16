@@ -24,6 +24,11 @@ class RouterTest extends \PHPUnit_Framework_TestCase
         $this->router = new Router($this->routes);
     }
 
+    public function tearDown()
+    {
+        unset($this->router);
+    }
+
     public function testRouterCanCallInstanceMethods()
     {
         $this->router->route(array('action' => 'test'));
