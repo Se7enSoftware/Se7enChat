@@ -1,6 +1,7 @@
 {
     "require": {
         "symfony/yaml": "2.4.*",
+        "mustache/mustache": "2.5.*",
         "leafo/lessphp": "0.4.*"
     },
     "require-dev": {
