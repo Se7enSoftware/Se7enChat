@@ -51,7 +51,7 @@ Alternately, you can start an infinite test loop by navigating to the `tests` di
 
 ```
 $ cd tests/
-& ./testloop.sh
+$ ./testloop.sh
 ```
 
 This will run the entire test suite every three seconds, allowing quick refactoring.
