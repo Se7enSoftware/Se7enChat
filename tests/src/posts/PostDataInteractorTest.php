@@ -1,7 +1,7 @@
 <?php
 namespace Se7enChat\tests\src\posts;
 use Se7enChat\src\posts\PostDataInteractor;
-use Se7enChat\data\test\PostData;
+use Se7enChat\app\data\test\PostData;
 use Se7enChat\tests\helpers\PostHelper;
 
 class PostDataInteractorTest extends \PHPUnit_Framework_TestCase

@@ -2,7 +2,7 @@
 namespace Se7enChat\tests\src\rooms;
 use Se7enChat\src\rooms\Room;
 use Se7enChat\src\rooms\RoomDataInteractor;
-use Se7enChat\data\test\RoomData;
+use Se7enChat\app\data\test\RoomData;
 
 
 class RoomDataInteractorTest extends \PHPUnit_Framework_TestCase

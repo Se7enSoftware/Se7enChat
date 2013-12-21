@@ -1,5 +1,5 @@
 <?php
-namespace Se7enChat\data\test;
+namespace Se7enChat\app\data\test;
 use Se7enChat\src\posts\PostDataInterface;
 use Se7enChat\src\posts\Post;
 

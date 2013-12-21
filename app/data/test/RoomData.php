@@ -1,5 +1,5 @@
 <?php
-namespace Se7enChat\data\test;
+namespace Se7enChat\app\data\test;
 use Se7enChat\src\rooms\RoomDataInterface;
 use Se7enChat\src\rooms\Room;
 
