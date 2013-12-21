@@ -39,4 +39,19 @@ More information on Composer can be found at the "Getting Started" page of the o
 Contributing
 ======
 
-If you wish to contribute to the project, you may fork us on GitHub and submit a pull request. However, please remember that Se7enChat is strict about unit testing, and expects all contributed code to be adequately tested using PHPUnit.
+If you wish to contribute to the project, you may fork us on GitHub and submit a pull request. However, please remember that Se7enChat is strict about unit testing and expects all contributed code to be adequately tested using PHPUnit.
+
+The PHPUnit executable is downloaded to `vendor/bin/` when you run composer, so you don't need to do anything special to get that set up. The tests can be run with this command, executed from Se7enChat's root directory.
+
+```
+$ vendor/bin/phpunit -c tests/phpunit.xml
+```
+
+Alternately, you can start an infinite test loop by navigating to the `tests` directory and running the testloop.sh script.
+
+```
+$ cd tests/
+& ./testloop.sh
+```
+
+This will run the entire test suite every three seconds, allowing quick refactoring.
