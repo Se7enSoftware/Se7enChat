@@ -44,13 +44,13 @@ If you wish to contribute to the project, you may fork us on GitHub and submit a
 The PHPUnit executable is downloaded to `vendor/bin/` when you run composer, so you don't need to do anything special to get that set up. The tests can be run with this command, executed from Se7enChat's root directory.
 
 ```
-$ vendor/bin/phpunit -c tests/phpunit.xml
+$ vendor/bin/phpunit -c Tests/phpunit.xml
 ```
 
 Alternately, you can start an infinite test loop by navigating to the `tests` directory and running the testloop.sh script.
 
 ```
-$ cd tests/
+$ cd Tests/
 $ ./testloop.sh
 ```
 
