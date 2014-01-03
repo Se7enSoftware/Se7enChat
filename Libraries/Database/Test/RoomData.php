@@ -1,9 +1,8 @@
 <?php
 namespace Se7enChat\Libraries\Database\Test;
-use Se7enChat\Entities\Rooms\RoomDataInterface;
-use Se7enChat\Entities\Rooms\Room;
+use Se7enChat\Gateways\RoomDataGateway;
 
-class RoomData implements RoomDataInterface
+class RoomData implements RoomDataGateway
 {
     public function deletePosts($roomId)
     {

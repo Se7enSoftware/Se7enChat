@@ -1,7 +1,8 @@
 <?php
-namespace Se7enChat\Entities\Posts;
+namespace Se7enChat\Gateways;
+use Se7enChat\Entities\Posts\Post;
 
-interface PostDataInterface
+interface PostDataGateway
 {
     public function savePost(Post $post);
     public function deletePost($id);

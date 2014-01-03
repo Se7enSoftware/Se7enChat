@@ -1,7 +1,7 @@
 <?php
-namespace Se7enChat\Entities\Rooms;
+namespace Se7enChat\Gateways;
 
-Interface RoomDataInterface
+Interface RoomDataGateway
 {
     public function deletePosts($roomId);
     public function deleteRoom($roomId);

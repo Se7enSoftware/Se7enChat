@@ -1,7 +1,7 @@
 <?php
 namespace Se7enChat\tests\Entities\Rooms;
 use Se7enChat\Entities\Rooms\Room;
-use Se7enChat\Entities\Rooms\RoomDataInteractor;
+use Se7enChat\Interactors\RoomDataInteractor;
 use Se7enChat\Libraries\Database\Test\RoomData;
 
 

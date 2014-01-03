@@ -1,6 +1,6 @@
 <?php
 namespace Se7enChat\Tests\Entities\Posts;
-use Se7enChat\Entities\Posts\PostDataInteractor;
+use Se7enChat\Interactors\PostDataInteractor;
 use Se7enChat\Libraries\Database\Test\PostData;
 use Se7enChat\Tests\Helpers\PostHelper;
 

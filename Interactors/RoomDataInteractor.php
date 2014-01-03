@@ -1,11 +1,13 @@
 <?php
-namespace Se7enChat\Entities\Rooms;
+namespace Se7enChat\Interactors;
+use Se7enChat\Gateways\RoomDataGateway;
+use Se7enChat\Entities\Rooms\Room;
 
 class RoomDataInteractor
 {
     private $dataLayer;
 
-    public function __construct(RoomDataInterface $dataLayer)
+    public function __construct(RoomDataGateway $dataLayer)
     {
         $this->dataLayer = $dataLayer;
     }

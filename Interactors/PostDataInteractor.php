@@ -1,5 +1,7 @@
 <?php
-namespace Se7enChat\Entities\Posts;
+namespace Se7enChat\Interactors;
+use Se7enChat\Entities\Posts\Post;
+use Se7enChat\Gateways\PostDataGateway;
 
 /*
  * Basically what we're doing here is abstracting the data layer.
@@ -23,7 +25,7 @@ class PostDataInteractor
 {
     private $dataLayer;
 
-    public function __construct(PostDataInterface $dataLayer)
+    public function __construct(PostDataGateway $dataLayer)
     {
         $this->dataLayer = $dataLayer;
     }

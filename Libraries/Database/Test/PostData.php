@@ -1,9 +1,9 @@
 <?php
 namespace Se7enChat\Libraries\Database\Test;
-use Se7enChat\Entities\Posts\PostDataInterface;
+use Se7enChat\Gateways\PostDataGateway;
 use Se7enChat\Entities\Posts\Post;
 
-class PostData implements PostDataInterface
+class PostData implements PostDataGateway
 {
     public function savePost(Post $post)
     {
