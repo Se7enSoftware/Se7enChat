@@ -45,10 +45,15 @@ class PostDataInteractorTest extends \PHPUnit_Framework_TestCase
     {
         $posts = $this->dataInteractor->getNewPostsAfter(1);
         foreach ($posts as $post) {
-            $this->assertNotEmpty($post['id']);
-            $this->assertNotEmpty($post['roomId']);
-            $this->assertNotEmpty($post['userId']);
-            $this->assertNotEmpty($post['text']);
+            $this->assertNotEmpty($post->getId());
+            $this->assertNotEmpty($post->getText());
+            $this->assertTrue(
+                is_int($post->getRoomId()));
+            $this->assertInstanceOf(
+                'Se7enChat\Entities\Users\User',
+                $post->getUser()
+            );
+
         }
     }
 }

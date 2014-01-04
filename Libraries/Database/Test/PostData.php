@@ -1,18 +1,19 @@
 <?php
 namespace Se7enChat\Libraries\Database\Test;
 use Se7enChat\Gateways\PostDataGateway;
-use Se7enChat\Entities\Posts\Post;
 
 class PostData implements PostDataGateway
 {
-    public function savePost(Post $post)
+    public function savePost(array $postInfo)
     {
-        return MemoryDatabase::add('post_' . $post->getId(), $post);
+        MemoryDatabase::add('post_' . $postInfo['id'], $postInfo);
+        return true;
     }
 
     public function deletePost($id)
     {
-        return MemoryDatabase::delete('post_' . $id);
+        MemoryDatabase::delete('post_' . $id);
+        return true;
     }
 
     public function getPostById($id)

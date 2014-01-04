@@ -13,6 +13,7 @@ class UserHelper
     private static function fauxUserDetails()
     {
         return array(
+            'id' => 1,
             'name' => 'Se7enRobot',
             'email' => 'se7en-robot@spamfactory.com',
             'avatar' => null

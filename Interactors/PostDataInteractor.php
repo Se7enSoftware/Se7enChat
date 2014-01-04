@@ -2,24 +2,7 @@
 namespace Se7enChat\Interactors;
 use Se7enChat\Entities\Posts\Post;
 use Se7enChat\Gateways\PostDataGateway;
-
-/*
- * Basically what we're doing here is abstracting the data layer.
- * This class is called by parts of the system that need post info.
- * It is given a data layer as a parameter, which does the
- * actual work of interacting with whatever persistent storage we use.
- *
- * This allows for two very important things.
- * 1) It makes testing very easy, by allowing us to
- *      use a fake, system memory database.
- *      See Se7enChat/data/test/MemoryDatabase.php
- * 2) And it allows for easy switching of data storage in general.
- *      For instance, at some point we may decide to store posts
- *      in files instead of a database.
- *
- * We call this the Interactor because it is the part that the
- * system interacts with when it needs to manipulate some data.
- */
+use Se7enChat\Tests\Helpers\UserHelper;
 
 class PostDataInteractor
 {
@@ -32,13 +15,15 @@ class PostDataInteractor
 
     public function savePost(Post $post)
     {
-        $saved = $this->dataLayer->savePost($post);
-        return $saved;
+        $postData = $this->constructPostArray($post);
+        $isSaved = $this->dataLayer->savePost($postData);
+        return $isSaved;
     }
 
     public function getPostById($id)
     {
-        return $this->dataLayer->getPostById($id);
+        return $this->constructPostObject(
+            $this->dataLayer->getPostById($id));
     }
 
     public function deletePost($id)
@@ -48,6 +33,31 @@ class PostDataInteractor
 
     public function getNewPostsAfter($id)
     {
-        return $this->dataLayer->getPostsWithIdGreaterThan($id);
+        $newPosts = $this->dataLayer->getPostsWithIdGreaterThan($id);
+        $postObjects = array();
+        foreach ($newPosts as $post) {
+            $postObjects[] = $this->constructPostObject($post);
+        }
+        return $postObjects;
+    }
+
+    private function constructPostArray(Post $post)
+    {
+        return array(
+            'id' => $post->getId(),
+            'roomId' => $post->getRoomid(),
+            'userId' => $post->getUser()->getId(),
+            'text' => $post->getText()
+        );
+    }
+
+    private function constructPostObject(array $postArray)
+    {
+        return new Post(
+            $postArray['id'],
+            $postArray['roomId'],
+            UserHelper::createUserObject(),
+            $postArray['text']
+        );
     }
 }

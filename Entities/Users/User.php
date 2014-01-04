@@ -12,6 +12,11 @@ class User
         $this->setUserInfo($userInformation);
     }
 
+    public function getId()
+    {
+        return $this->id;
+    }
+
     public function getName()
     {
         return $this->name;
@@ -29,6 +34,7 @@ class User
 
     private function setUserInfo(array $info)
     {
+        $this->id = $info['id'];
         $this->name = $info['name'];
         $this->email = $info['email'];
         $this->avatar = $info['avatar'];
