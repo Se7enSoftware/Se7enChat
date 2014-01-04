@@ -1,5 +1,5 @@
 <?php
-namespace Se7enChat\Tests\Entities\Posts;
+namespace Se7enChat\Tests\Interactors;
 use Se7enChat\Interactors\PostDataInteractor;
 use Se7enChat\Libraries\Database\Test\PostData;
 use Se7enChat\Tests\Helpers\PostHelper;
@@ -37,7 +37,7 @@ class PostDataInteractorTest extends \PHPUnit_Framework_TestCase
             PostHelper::createPostObject(1));
 
         $this->assertInstanceOf(
-            'Se7enChat\Entities\Posts\Post',
+            'Se7enChat\Entities\Post',
             $this->dataInteractor->getPostById(1));
     }
 
@@ -50,7 +50,7 @@ class PostDataInteractorTest extends \PHPUnit_Framework_TestCase
             $this->assertTrue(
                 is_int($post->getRoomId()));
             $this->assertInstanceOf(
-                'Se7enChat\Entities\Users\User',
+                'Se7enChat\Entities\User',
                 $post->getUser()
             );
 

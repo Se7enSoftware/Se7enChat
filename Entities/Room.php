@@ -1,5 +1,5 @@
 <?php
-namespace Se7enChat\Entities\Rooms;
+namespace Se7enChat\Entities;
 
 class Room
 {

@@ -1,6 +1,6 @@
 <?php
-namespace Se7enChat\tests\Entities\Rooms;
-use Se7enChat\Entities\Rooms\Room;
+namespace Se7enChat\Tests\Interactors;
+use Se7enChat\Entities\Room;
 use Se7enChat\Interactors\RoomDataInteractor;
 use Se7enChat\Libraries\Database\Test\RoomData;
 
@@ -55,7 +55,7 @@ class RoomDataInteractorTest extends \PHPUnit_Framework_TestCase
     public function testCanCreateRoomObjectFromId()
     {
         $this->assertInstanceOf(
-            'Se7enChat\Entities\Rooms\Room',
+            'Se7enChat\Entities\Room',
             $this->interactor->createRoomObject(3)
         );
     }

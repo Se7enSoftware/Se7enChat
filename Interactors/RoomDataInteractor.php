@@ -1,7 +1,7 @@
 <?php
 namespace Se7enChat\Interactors;
 use Se7enChat\Gateways\RoomDataGateway;
-use Se7enChat\Entities\Rooms\Room;
+use Se7enChat\Entities\Room;
 
 class RoomDataInteractor
 {

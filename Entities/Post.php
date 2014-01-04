@@ -1,6 +1,6 @@
 <?php
-namespace Se7enChat\Entities\Posts;
-use Se7enChat\Entities\Users\User;
+namespace Se7enChat\Entities;
+use Se7enChat\Entities\User;
 
 class Post
 {

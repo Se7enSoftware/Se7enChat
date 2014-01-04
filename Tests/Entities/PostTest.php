@@ -1,5 +1,5 @@
 <?php
-namespace Se7enChat\Tests\Entities\Posts;
+namespace Se7enChat\Tests\Entities;
 use Se7enChat\Tests\Helpers\PostHelper;
 
 class PostTest extends \PHPUnit_Framework_TestCase
@@ -24,7 +24,7 @@ class PostTest extends \PHPUnit_Framework_TestCase
 
     public function testContainsReferenceToUserObject()
     {
-        $this->assertInstanceOf('Se7enChat\Entities\users\User', $this->post->getUser());
+        $this->assertInstanceOf('Se7enChat\Entities\User', $this->post->getUser());
     }
 
     public function testHasId()

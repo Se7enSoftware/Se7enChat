@@ -1,5 +1,5 @@
 <?php
-namespace Se7enChat\Entities\Users;
+namespace Se7enChat\Entities;
 
 class User
 {

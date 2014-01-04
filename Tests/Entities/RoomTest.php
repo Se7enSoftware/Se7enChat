@@ -1,6 +1,6 @@
 <?php
-namespace Se7enChat\tests\Entities\Rooms;
-use Se7enChat\Entities\Rooms\Room;
+namespace Se7enChat\tests\Entities;
+use Se7enChat\Entities\Room;
 use Se7enChat\tests\helpers\PostHelper;
 
 class RoomTest extends \PHPUnit_Framework_TestCase
@@ -41,7 +41,7 @@ class RoomTest extends \PHPUnit_Framework_TestCase
     {
         $posts = $this->room->getPosts();
         foreach ($posts as $post) {
-            $this->assertInstanceOf('Se7enChat\Entities\Posts\Post', $post);
+            $this->assertInstanceOf('Se7enChat\Entities\Post', $post);
         }
     }
 

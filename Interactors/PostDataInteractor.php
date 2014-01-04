@@ -1,6 +1,6 @@
 <?php
 namespace Se7enChat\Interactors;
-use Se7enChat\Entities\Posts\Post;
+use Se7enChat\Entities\Post;
 use Se7enChat\Gateways\PostDataGateway;
 use Se7enChat\Tests\Helpers\UserHelper;
 

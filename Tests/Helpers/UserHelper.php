@@ -1,7 +1,7 @@
 <?php
 namespace Se7enChat\Tests\Helpers;
-use Se7enChat\Entities\Users\User;
-use Se7enChat\Entities\Posts\Post;
+use Se7enChat\Entities\User;
+use Se7enChat\Entities\Post;
 
 class UserHelper
 {
