@@ -2,15 +2,18 @@
 namespace Se7enChat\Interactors;
 use Se7enChat\Entities\Post;
 use Se7enChat\Gateways\PostDataGateway;
-use Se7enChat\Tests\Helpers\UserHelper;
+use Se7enChat\Gateways\UserDataGateway;
 
 class PostDataInteractor
 {
     private $dataLayer;
+    private $userInteractor;
 
-    public function __construct(PostDataGateway $dataLayer)
+    public function __construct(
+        PostDataGateway $postDataLayer, UserDataGateway $userDataLayer)
     {
-        $this->dataLayer = $dataLayer;
+        $this->dataLayer = $postDataLayer;
+        $this->userInteractor = new UserDataInteractor($userDataLayer);
     }
 
     public function savePost(Post $post)
@@ -56,7 +59,8 @@ class PostDataInteractor
         return new Post(
             $postArray['id'],
             $postArray['roomId'],
-            UserHelper::createUserObject(),
+            $this->userInteractor->getUserFromId(
+                $postArray['userId']),
             $postArray['text']
         );
     }

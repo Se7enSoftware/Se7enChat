@@ -2,6 +2,7 @@
 namespace Se7enChat\Tests\Interactors;
 use Se7enChat\Interactors\PostDataInteractor;
 use Se7enChat\Libraries\Database\Test\PostData;
+use Se7enChat\Libraries\Database\Test\UserData;
 use Se7enChat\Tests\Helpers\PostHelper;
 
 class PostDataInteractorTest extends \PHPUnit_Framework_TestCase
@@ -10,7 +11,8 @@ class PostDataInteractorTest extends \PHPUnit_Framework_TestCase
 
     public function setUp()
     {
-        $this->dataInteractor = new PostDataInteractor(new PostData);
+        $this->dataInteractor = new PostDataInteractor(
+            new PostData, new UserData);
     }
 
     public function tearDown()
