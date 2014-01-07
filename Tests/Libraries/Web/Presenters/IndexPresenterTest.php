@@ -18,9 +18,9 @@ class IndexPresenterTest extends \PHPUnit_Framework_TestCase
         unset($this->presenter);
     }
 
-    public function testCallsRenderOnUserInterface()
+    public function testCallsRenderMethod()
     {
-        $this->presenter->render('', array());
+        $this->presenter->present(array());
         $this->assertTrue(TestUserInterface::$renderCalled);
     }
 }

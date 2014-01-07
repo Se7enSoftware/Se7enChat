@@ -3,5 +3,5 @@ namespace Se7enChat\Boundaries;
 
 interface IndexOutputPort
 {
-    public function render($template, array $information);
+    public function present(array $information);
 }

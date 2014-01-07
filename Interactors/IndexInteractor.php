@@ -9,7 +9,7 @@ class IndexInteractor implements IndexInputPort
 
     public function main(array $information)
     {
-        $this->outputPort->render("test", $information);
+        $this->outputPort->present($information);
     }
 
     public function setOutputPort(IndexOutputPort $output)

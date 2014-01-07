@@ -12,8 +12,8 @@ class IndexPresenter implements IndexOutputPort
         $this->userInterface = $ui;
     }
 
-    public function render($template, array $information)
+    public function present(array $information)
     {
-        $this->userInterface->render($template, $information);
+        $this->userInterface->render('test', $information);
     }
 }
