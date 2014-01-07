@@ -11,6 +11,6 @@ class MustacheShell implements UserInterfaceGateway
 
     public function render($template, array $params)
     {
-        $this->engine->render($template, $params);
+        echo $this->engine->render($template, $params);
     }
 }
