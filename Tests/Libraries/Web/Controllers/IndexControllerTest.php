@@ -11,11 +11,10 @@ class IndexControllerTest extends \PHPUnit_Framework_TestCase
 
     public function setUp()
     {
-        $presenter = new IndexPresenter(
-            new MockUserInterface);
-
+        $this->interactor = $this->getMock(
+            '\Se7enChat\Interactors\IndexInteractor');
         $this->controller = new IndexController(
-            new MockIndexInteractor, $presenter);
+            $this->interactor);
     }
 
     public function tearDown()
@@ -23,9 +22,11 @@ class IndexControllerTest extends \PHPUnit_Framework_TestCase
         unset($this->controller);
     }
 
-    public function testCallsIndexInteractor()
+    public function testCallsIndexInteractorMainMethod()
     {
+        $this->interactor->expects($this->once())
+            ->method('main');
         $this->controller->main();
-        $this->assertTrue(MockIndexInteractor::$mainWasCalled);
     }
 }
+

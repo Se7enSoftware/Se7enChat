@@ -1,7 +1,7 @@
 <?php
 namespace Se7enChat\Tests\Libraries\Web\Presenters;
 use Se7enChat\Libraries\Web\Presenters\IndexPresenter;
-use Se7enChat\Tests\Helpers\Mocks\MockUserInterface;
+use Se7enChat\Libraries\UserInterface\Test\TestUserInterface;
 
 class IndexPresenterTest extends \PHPUnit_Framework_TestCase
 {
@@ -10,7 +10,7 @@ class IndexPresenterTest extends \PHPUnit_Framework_TestCase
     public function setUp()
     {
         $this->presenter = new IndexPresenter(
-            new MockUserInterface);
+            new TestUserInterface);
     }
 
     public function tearDown()
@@ -20,7 +20,7 @@ class IndexPresenterTest extends \PHPUnit_Framework_TestCase
 
     public function testCallsRenderOnUserInterface()
     {
-        $this->presenter->render(array());
-        $this->assertTrue(MockUserInterface::$renderCalled);
+        $this->presenter->render('', array());
+        $this->assertTrue(TestUserInterface::$renderCalled);
     }
 }

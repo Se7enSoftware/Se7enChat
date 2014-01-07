@@ -13,6 +13,9 @@ class Router
 
     public function route(array $request)
     {
+        if (in_array('default', $this->routeKeys) && count($request) == 1) {
+            $this->routeRequest($this->routes['default']);
+        }
         foreach ($request as $requestKey => $requestValue) {
             if (in_array($requestKey, $this->routeKeys)) {
                 $this->routeRequest($this->routes[$requestKey][$requestValue]);

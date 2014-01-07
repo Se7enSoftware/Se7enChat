@@ -3,5 +3,5 @@ namespace Se7enChat\Gateways;
 
 interface UserInterfaceGateway
 {
-    public function render(array $data);
+    public function render($template, array $data);
 }

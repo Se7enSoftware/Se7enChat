@@ -1,18 +1,19 @@
 <?php
 namespace Se7enChat\Libraries\Web\Controllers;
+use Se7enChat\Libraries\Web\Presenters\IndexPresenter;
+use Se7enChat\Libraries\UserInterface\Mustache\MustacheShell;
 use Se7enChat\Boundaries\IndexInputPort;
-use Se7enChat\Boundaries\IndexOutputPort;
 
 class IndexController
 {
     private $inputPort;
     private $outputPort;
 
-    public function __construct(
-        IndexInputPort $inputPort, IndexOutputPort $outputPort)
+    public function __construct(IndexInputPort $inputPort)
     {
         $this->inputPort = $inputPort;
-        $this->outputPort = $outputPort;
+        $this->outputPort = new IndexPresenter(
+            new MustacheShell);
     }
 
     public function main()
