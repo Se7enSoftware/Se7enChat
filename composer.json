@@ -1,4 +1,7 @@
 {
+    "name": "se7enchat/se7enchat",
+    "description": "Web-based chat emphasising good software design and modern technologies.",
+    "license": "MIT",
     "require": {
         "symfony/yaml": "2.4.*",
         "mustache/mustache": "2.5.*",
