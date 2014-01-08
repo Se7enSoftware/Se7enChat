@@ -8,13 +8,13 @@ Se7enChat is a web-based chat written from the ground up with good software desi
 How far along are you?
 ======
 
-Well, the short answer is "Not very far."
+Things are coming along pretty well now. Some recent changes are:
 
-At this point in time, we're only running through the test environment, which means that the code base can't be run through a browser. There's essentially no program code to speak of, so by itself, the application doesn't really do anything. There's no "Main" file, no request routing and no code implementing what we do have.
+- Implemented a cleaner architecture that encourages decoupled components.
+- Added "the web" as a library.
+- Request/response cycle partially added.
 
-What we do have, is a solid and growing core of data structures, better known to some people as "models." We've got post objects, room objects that contain posts, and a user object. We've also got a nice data abstraction going, wherein storage can be swapped out easily. This helps a lot with testing because we don't have to use a database.
-
-The game plan right now is to work a little bit more on the data structures to get them in tip-top shape. After the data structures are in place, we'll start working on hooking everything together with implementation code.
+It still doesn't look much like a chat, but we're quickly heading toward something useful.
 
 What are some planned features?
 ======
