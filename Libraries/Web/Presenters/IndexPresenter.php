@@ -14,6 +14,8 @@ class IndexPresenter implements IndexOutputPort
 
     public function present(array $information)
     {
-        $this->userInterface->render('test', $information);
+        $this->userInterface->render('index', array(
+            'pageTitle' => 'Se7enChat'
+        ));
     }
 }
