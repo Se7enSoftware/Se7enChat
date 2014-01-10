@@ -3,8 +3,42 @@
 <html>
     <head>
         <title>((pageTitle))</title>
+        <link rel="stylesheet" type="text/css" href="((cssUrl))/index.css">
     </head>
     <body>
-        test
+        <div id="headerBar">
+            ((# rooms ))
+                <div class="room ((selected))">((name))</div>
+            ((/ rooms ))
+        </div>
+        <div id="posts">
+            ((# posts ))
+                <div class="post">
+                    <div class="postHeader">
+                        <div id="controlIcons">
+                            <img id="delete" src="((imageUrl))/delete.png" />
+                        </div>
+                        <strong>((userName))</strong> | ((timestamp))
+                        <div class="controls"></div>
+                    </div>
+                    <div class="postBody">
+                        ((body))
+                    </div>
+                </div>
+            ((/ posts ))
+        </div>
+        <div id="sideSlider"></div>
+        <div id="footerBar">
+            <div id="userInformation">
+                <img id="avatar" src="https://1.gravatar.com/avatar/bcb89de9c8518971fb81dd618dd20890?d=https%3A%2F%2Fidenticons.github.com%2F469ba26ff759c85ad1cc9c448addd030.png&r=x&s=440">
+                ((userName))
+            </div>
+            <div id="inputContainer">
+                <form>
+                    <input type="submit" id="messageButton" value="Send">
+                    <input type="text" id="messageBar" placeholder="Type here, then press enter.">
+                </form>
+            </div>
+        </div>
     </body>
 </html>
