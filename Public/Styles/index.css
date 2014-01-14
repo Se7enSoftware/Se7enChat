@@ -41,6 +41,17 @@
   background: linear-gradient(to bottom,#e4e4e4 0%,#ffffff 100%);
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#e4e4e4',endColorstr='#ffffff',GradientType=0);
 }
+.post.ng-enter {
+  padding: 0 8px;
+  height: 0;
+  opacity: 0;
+  transition: 0.5s linear all;
+}
+.post.ng-enter-active {
+  padding: 30px 8px 5px 8px;
+  height: auto;
+  opacity: 1;
+}
 .shadow {
   -webkit-box-shadow: 0 0 5px 1px #333333;
   box-shadow: 0 0 5px 1px #333333;
@@ -50,14 +61,6 @@ body {
   padding: 0;
   color: #333;
   font-family: arial;
-  background: #e4e4e4;
-  background: -moz-linear-gradient(left,#e4e4e4 0%,#ffffff 50%,#e4e4e4 100%);
-  background: -webkit-gradient(linear,left top,right top,color-stop(0%,#e4e4e4),color-stop(50%,#ffffff),color-stop(100%,#e4e4e4));
-  background: -webkit-linear-gradient(left,#e4e4e4 0%,#ffffff 50%,#e4e4e4 100%);
-  background: -o-linear-gradient(left,#e4e4e4 0%,#ffffff 50%,#e4e4e4 100%);
-  background: -ms-linear-gradient(left,#e4e4e4 0%,#ffffff 50%,#e4e4e4 100%);
-  background: linear-gradient(to right,#e4e4e4 0%,#ffffff 50%,#e4e4e4 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#e4e4e4',endColorstr='#e4e4e4',GradientType=1);
 }
 #headerBar {
   position: absolute;
@@ -114,13 +117,21 @@ body {
   bottom: 40px;
   left: 0;
   overflow: auto;
+  background: #e4e4e4;
+  background: -moz-linear-gradient(left,#e4e4e4 0%,#ffffff 50%,#e4e4e4 100%);
+  background: -webkit-gradient(linear,left top,right top,color-stop(0%,#e4e4e4),color-stop(50%,#ffffff),color-stop(100%,#e4e4e4));
+  background: -webkit-linear-gradient(left,#e4e4e4 0%,#ffffff 50%,#e4e4e4 100%);
+  background: -o-linear-gradient(left,#e4e4e4 0%,#ffffff 50%,#e4e4e4 100%);
+  background: -ms-linear-gradient(left,#e4e4e4 0%,#ffffff 50%,#e4e4e4 100%);
+  background: linear-gradient(to right,#e4e4e4 0%,#ffffff 50%,#e4e4e4 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#e4e4e4',endColorstr='#e4e4e4',GradientType=1);
 }
-.post {
+#posts .post {
   position: relative;
   padding: 30px 8px 5px 8px;
   border-bottom: 2px dashed #aaa;
 }
-.postHeader {
+#posts .post .postHeader {
   position: absolute;
   top: 0;
   right: 0;
@@ -130,11 +141,11 @@ body {
   font-size: 12px;
   color: #555;
 }
-.postHeader #controlIcons {
+#posts .post .postHeader #controlIcons {
   float: right;
   line-height: 25px;
 }
-.postBody {
+#posts .post .postBody {
   color: #888;
 }
 #sideSlider {
@@ -145,7 +156,7 @@ body {
   width: 15px;
   border-left: 1px solid #aaa;
   cursor: pointer;
-  background: #e4e4e4 url(../Images/SideSliderArrow.png) center center no-repeat;
+  background: #e4e4e4 url(../Images/side-slider-arrow.png) center center no-repeat;
 }
 #footerBar {
   position: absolute;
@@ -162,7 +173,7 @@ body {
   background: linear-gradient(to bottom,#0077e6 0%,#2f69b5 100%);
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#0077e6',endColorstr='#2f69b5',GradientType=0);
 }
-#inputContainer {
+#footerBar #inputContainer {
   position: absolute;
   top: 5px;
   left: 5px;
@@ -174,7 +185,7 @@ body {
   -webkit-box-shadow: 0 0 5px 1px #333333;
   box-shadow: 0 0 5px 1px #333333;
 }
-#inputContainer #messageBar {
+#footerBar #inputContainer #messageBar {
   outline: none;
   display: table-cell;
   vertical-align: middle;
@@ -194,7 +205,7 @@ body {
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#e4e4e4',endColorstr='#e4e4e4',GradientType=1);
   color: #888;
 }
-#inputContainer #messageButton {
+#footerBar #inputContainer #messageButton {
   display: table-cell;
   vertical-align: middle;
   float: right;
@@ -218,7 +229,7 @@ body {
   cursor: pointer;
   text-shadow: 0 0 1px #333333;
 }
-#inputContainer #messageButton:hover {
+#footerBar #inputContainer #messageButton:hover {
   -webkit-transition: text-shadow 300ms ease;
   -moz-transition: text-shadow 300ms ease;
   -ms-transition: text-shadow 300ms ease;
@@ -226,7 +237,7 @@ body {
   transition: text-shadow 300ms ease;
   text-shadow: 0 0 1px #FFFFFF;
 }
-#userInformation {
+#footerBar #userInformation {
   line-height: 40px;
   font-size: 12px;
   font-weight: bold;
@@ -234,7 +245,7 @@ body {
   text-shadow: 0 0 1px #333333;
   float: right;
 }
-#userInformation #avatar {
+#footerBar #userInformation #avatar {
   float: right;
   width: 32px;
   height: 32px;
