@@ -4,6 +4,7 @@ namespace Se7enChat\Libraries\Router;
 class Router
 {
     private $routes;
+    private $didRoute;
 
     public function __construct($routes)
     {
@@ -13,13 +14,13 @@ class Router
 
     public function route(array $request)
     {
-        if (in_array('default', $this->routeKeys) && count($request) == 1) {
-            $this->routeRequest($this->routes['default']);
-        }
         foreach ($request as $requestKey => $requestValue) {
             if (in_array($requestKey, $this->routeKeys)) {
                 $this->routeRequest($this->routes[$requestKey][$requestValue]);
             }
+        }
+        if (in_array('default', $this->routeKeys) && !$this->didRoute) {
+            $this->routeRequest($this->routes['default']);
         }
     }
 
@@ -32,6 +33,7 @@ class Router
             $executable = array(new $pieces[0], $pieces[1]);
         }
         call_user_func($executable);
+        $this->didRoute = true;
     }
 
     private function getMethodType($route)

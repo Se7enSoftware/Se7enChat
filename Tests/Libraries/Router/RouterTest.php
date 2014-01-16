@@ -41,4 +41,12 @@ class RouterTest extends \PHPUnit_Framework_TestCase
         $this->router->route(array('action' => 'staticTest'));
         $this->assertTrue(TestAction::$staticMainWasCalled);
     }
+
+    public function testRouterCanRouteToDefaultMethod()
+    {
+        $router = new Router(array(
+            'default' => '\Se7enChat\Tests\Libraries\Router\TestAction->main'));
+        $router->route(array());
+        $this->assertTrue(TestAction::$mainWasCalled);
+    }
 }
