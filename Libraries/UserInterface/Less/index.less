@@ -32,19 +32,36 @@ body {
     float: left;
     margin: 5px 0 0 10px;
     line-height: 25px;
-    padding: 0 8px;
+    padding: 0 10px;
     color: @lightText;
-    font-size: 15px;
+    font-size: 12px;
+    font-weight: bold;
     -webkit-border-radius: 6px 6px 0 0;
     border-radius: 6px 6px 0 0;
     .verticalWhiteGradient;
     cursor: pointer;
+}
+.room:hover {
+    -webkit-transition: text-shadow 300ms ease;
+    -moz-transition: text-shadow 300ms ease;
+    -ms-transition: text-shadow 300ms ease;
+    -o-transition: text-shadow 300ms ease;
+    transition: text-shadow 300ms ease;
+    text-shadow: 0 0 1px @lightText;
 }
 .room.selected {
     color: @whiteText;
     .blueGradient;
     -webkit-box-shadow: 0 0 1px 0 #FFFFFF;
     box-shadow: 0 0 1px 0 #FFFFFF;
+}
+.room.selected:hover {
+    -webkit-transition: text-shadow 300ms ease;
+    -moz-transition: text-shadow 300ms ease;
+    -ms-transition: text-shadow 300ms ease;
+    -o-transition: text-shadow 300ms ease;
+    transition: text-shadow 300ms ease;
+    text-shadow: 0 0 1px #FFFFFF;
 }
 
 #posts {
@@ -161,13 +178,13 @@ body {
         color: @whiteText;
         .textShadow;
         float: right;
+        cursor: pointer;
 
         #avatar {
             float: right;
             width: 32px;
             height: 32px;
             margin: 4px 10px 0 10px;
-            cursor: pointer;
             border-radius: @borderRadius;
         }
     }
