@@ -82,9 +82,10 @@ body {
   float: left;
   margin: 5px 0 0 10px;
   line-height: 25px;
-  padding: 0 8px;
+  padding: 0 10px;
   color: #888;
-  font-size: 15px;
+  font-size: 12px;
+  font-weight: bold;
   -webkit-border-radius: 6px 6px 0 0;
   border-radius: 6px 6px 0 0;
   background: #e4e4e4;
@@ -96,6 +97,14 @@ body {
   background: linear-gradient(to bottom,#e4e4e4 0%,#ffffff 100%);
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#e4e4e4',endColorstr='#ffffff',GradientType=0);
   cursor: pointer;
+}
+.room:hover {
+  -webkit-transition: text-shadow 300ms ease;
+  -moz-transition: text-shadow 300ms ease;
+  -ms-transition: text-shadow 300ms ease;
+  -o-transition: text-shadow 300ms ease;
+  transition: text-shadow 300ms ease;
+  text-shadow: 0 0 1px #888;
 }
 .room.selected {
   color: #eee;
@@ -109,6 +118,14 @@ body {
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#0077e6',endColorstr='#2f69b5',GradientType=0);
   -webkit-box-shadow: 0 0 1px 0 #FFFFFF;
   box-shadow: 0 0 1px 0 #FFFFFF;
+}
+.room.selected:hover {
+  -webkit-transition: text-shadow 300ms ease;
+  -moz-transition: text-shadow 300ms ease;
+  -ms-transition: text-shadow 300ms ease;
+  -o-transition: text-shadow 300ms ease;
+  transition: text-shadow 300ms ease;
+  text-shadow: 0 0 1px #FFFFFF;
 }
 #posts {
   position: absolute;
@@ -244,12 +261,12 @@ body {
   color: #eee;
   text-shadow: 0 0 1px #333333;
   float: right;
+  cursor: pointer;
 }
 #footerBar #userInformation #avatar {
   float: right;
   width: 32px;
   height: 32px;
   margin: 4px 10px 0 10px;
-  cursor: pointer;
   border-radius: 6px;
 }
