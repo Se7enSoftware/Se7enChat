@@ -27,13 +27,37 @@ class Router
     private function routeRequest($route)
     {
         $pieces = explode($this->getMethodType($route), $route);
-        if ($this->methodIsStatic($route)) {
-            $executable = sprintf('%s::%s', $pieces[0], $pieces[1]);
-        } else {
-            $executable = array(new $pieces[0], $pieces[1]);
-        }
-        call_user_func($executable);
+        $this->callMethod($pieces[0], $pieces[1]);
         $this->didRoute = true;
+    }
+
+    private function callMethod($class, $method)
+    {
+        $reflectedObject = new \ReflectionClass($class);
+        $objectInstance = $reflectedObject->newInstanceArgs(
+            $this->resolveClassDependencies($class));
+        call_user_func(array($objectInstance, $method));
+    }
+
+    private function resolveClassDependencies($class)
+    {
+        $parameters = $this->getConstructorParameters($class);
+        $requiredObjects = array();
+        foreach($parameters as $object) {
+            $className = $object->getClass()->name;
+            $requiredObjects[] = new $className;
+        }
+        return $requiredObjects;
+    }
+
+    private function getConstructorParameters($class)
+    {
+        $reflectionClass = new \ReflectionClass($class);
+        $constructor = $reflectionClass->getConstructor();
+        if ($constructor === null) {
+            return array();
+        }
+        return $constructor->getParameters();
     }
 
     private function getMethodType($route)

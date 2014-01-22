@@ -11,9 +11,11 @@ class RouterTest extends \PHPUnit_Framework_TestCase
     {
         // In most cases this would probably be given parsed yaml.
         $this->routes = array(
+            'default' => '\Se7enChat\Tests\Libraries\Router\TestAction->main',
             'action' => array(
                 'test' => '\Se7enChat\Tests\Libraries\Router\TestAction->main',
-                'staticTest' => '\Se7enChat\Tests\Libraries\Router\TestAction::staticMain'
+                'staticTest' => '\Se7enChat\Tests\Libraries\Router\TestAction::staticMain',
+                'dependencyTest' => '\Se7enChat\Tests\Libraries\Router\TestActionWithDependency->main'
             )
         );
     }
@@ -30,23 +32,36 @@ class RouterTest extends \PHPUnit_Framework_TestCase
         TestAction::$staticMainWasCalled = false;
     }
 
-    public function testRouterCanCallInstanceMethods()
+    public function testDoesCallInstanceMethods()
     {
         $this->router->route(array('action' => 'test'));
         $this->assertTrue(TestAction::$mainWasCalled);
     }
 
-    public function testRouterCanCallStaticMethods()
+    public function testDoesCallStaticMethods()
     {
         $this->router->route(array('action' => 'staticTest'));
         $this->assertTrue(TestAction::$staticMainWasCalled);
     }
 
-    public function testRouterCanRouteToDefaultMethod()
+    public function testDoesRouteToDefaultMethod()
     {
-        $router = new Router(array(
-            'default' => '\Se7enChat\Tests\Libraries\Router\TestAction->main'));
-        $router->route(array());
+        $this->router->route(array());
         $this->assertTrue(TestAction::$mainWasCalled);
+    }
+
+    public function testDoesResolveClassDependencies()
+    {
+        $this->router->route(array(
+            'action' => 'dependencyTest'
+        ));
+        $this->assertInstanceOf(
+            '\Se7enChat\Tests\Libraries\Router\RouterDependency',
+            TestActionWithDependency::$dependency
+        );
+        $this->assertInstanceOf(
+            '\Se7enChat\Tests\Libraries\Router\RouterDependency',
+            TestActionWithDependency::$secondDependency
+        );
     }
 }
