@@ -1,1 +1,1 @@
-default: '\Se7enChat\Libraries\Web\Builders\ChatBuilder->showChat'
+default: '\Se7enChat\Libraries\Web\Controllers\IndexController->main'

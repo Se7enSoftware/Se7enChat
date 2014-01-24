@@ -4,12 +4,18 @@ namespace Se7enChat\Libraries\Router;
 class Router
 {
     private $routes;
+    private $dependencies = array();
     private $didRoute;
 
     public function __construct($routes)
     {
         $this->routes = $routes;
         $this->routeKeys = array_keys($this->routes);
+    }
+
+    public function setDependencies(array $classMap)
+    {
+        $this->dependencies = $classMap;
     }
 
     public function route(array $request)
@@ -41,13 +47,26 @@ class Router
 
     private function resolveClassDependencies($class)
     {
-        $parameters = $this->getConstructorParameters($class);
+        $dependencies = $this->mapDependencies(
+            $this->getConstructorParameters($class));
         $requiredObjects = array();
-        foreach($parameters as $object) {
-            $className = $object->getClass()->name;
-            $requiredObjects[] = new $className;
+        foreach($dependencies as $object) {
+            $requiredObjects[] = new $object;
         }
         return $requiredObjects;
+    }
+
+    private function mapDependencies(array $constructorDependencies)
+    {
+        for ($i = 0; $i < count($constructorDependencies); ++$i) {
+            $className = $constructorDependencies[$i]->getClass()->name;
+            if (array_key_exists($className, $this->dependencies)) {
+                $constructorDependencies[$i] = $this->dependencies[$className];
+            } else {
+                $constructorDependencies[$i] = $className;
+            }
+        }
+        return $constructorDependencies;
     }
 
     private function getConstructorParameters($class)
