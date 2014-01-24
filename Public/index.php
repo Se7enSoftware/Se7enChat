@@ -11,6 +11,8 @@ require_once '../vendor/autoload.php';
 
 $yamlParser = new Parser();
 $routes = $yamlParser->parse(file_get_contents('routes.yaml'));
+$dependencies = $yamlParser->parse(file_get_contents('dependencies.yaml'));
 
 $router = new Router($routes);
+$router->setDependencies($dependencies);
 $router->route($_GET);

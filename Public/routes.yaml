@@ -1,1 +1,1 @@
-default: '\Se7enChat\Libraries\Web\Controllers\IndexController->main'
+default: 'Se7enChat\Libraries\Web\Controllers\IndexController->main'
