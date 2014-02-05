@@ -36,10 +36,8 @@ class PostInteractorTest extends \PHPUnit_Framework_TestCase
 
     public function testDoesGetPostById()
     {
-        $this->assertEquals(
-            $this->interactor->getPostById(1)['id'],
-            1
-        );
+        $post = $this->interactor->getPostById(1);
+        $this->assertEquals($post['id'], 1);
     }
 
     public function testDoesGetPostsWithIdGreaterThanThatWhichIsGiven()
