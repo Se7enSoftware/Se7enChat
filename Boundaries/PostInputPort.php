@@ -1,7 +1,7 @@
 <?php
-namespace Se7enChat\Gateways;
+namespace Se7enChat\Boundaries;
 
-interface PostDataGateway
+interface PostInputPort
 {
     public function savePost(array $post);
     public function deletePostById($id);

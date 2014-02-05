@@ -5,37 +5,34 @@ use Se7enChat\Gateways\PostDataGateway;
 class PostData implements PostDataGateway
 {
     public function savePost(array $postInfo)
-    {
-        MemoryDatabase::add('post_' . $postInfo['id'], $postInfo);
-        return true;
-    }
+    {}
 
-    public function deletePost($id)
-    {
-        MemoryDatabase::delete('post_' . $id);
-        return true;
-    }
+    public function deletePostById($id)
+    {}
 
     public function getPostById($id)
     {
-        return MemoryDatabase::getByName('post_' . $id);
+        if ($id === 1337) {
+            return array();
+        }
+        return $this->genericPost($id);
     }
 
     public function getPostsWithIdGreaterThan($id)
     {
         return array(
-            array(
-                'id' =>     2,
-                'roomId' => 1,
-                'userId' => 1,
-                'text' =>   'text'
-            ),
-            array(
-                'id' =>     2,
-                'roomId' => 1,
-                'userId' => 1,
-                'text' =>   'text'
-            )
+            $this->genericPost($id + 1),
+            $this->genericPost($id + 2)
+        );
+    }
+
+    private function genericPost($id)
+    {
+        return array(
+            'id' =>     $id,
+            'roomId' => 1,
+            'userId' => 1,
+            'text' =>   'text'
         );
     }
 }
