@@ -7,7 +7,7 @@
     convertNoticesToExceptions="true"
     convertWarningsToExceptions="true">
     <testsuites>
-        <testsuite name="Se7enChat">
+        <testsuite name="UnitTests">
             <directory suffix="Test.php">Entities</directory>
             <directory suffix="Test.php">Interactors</directory>
             <directory suffix="Test.php">Libraries</directory>

@@ -10,18 +10,8 @@ How far along are you?
 
 Things are coming along pretty well now. Some recent changes are:
 
-- Implemented a cleaner architecture that encourages decoupled components.
-- Added "the web" as a library.
-- Request/response cycle partially added.
-
-It still doesn't look much like a chat, but we're quickly heading toward something useful.
-
-What are some planned features?
-======
-
-- Log in with GitHub, Google or Twitter, using OAuth.
-- Responsive theme.
-- Semi-instant server feedback via polling.
+- Designed a partially working user interface.
+- Hooked up the database to some mechanisms, though it still isn't a solid dependency.
 
 Installation
 ======
@@ -55,17 +45,24 @@ A copy of the DCO can be found in the DCO.txt file located in the root directory
 Testing
 ======
 
-The PHPUnit executable is downloaded to `vendor/bin/` when you run composer, so you don't need to do anything special to get that set up. The tests can be run with this command, executed from Se7enChat's root directory.
+The PHPUnit executable is downloaded to `vendor/bin/` when you run composer, so you don't need to do anything special to get that set up. The tests consist of two "suites," one for unit tests and one for integration tests.
+
+Unit tests can be run with this command:
+
+```
+$ vendor/bin/phpunit -c Tests/phpunit.xml --testsuite UnitTests
+```
+
+Integration tests can be run with this command:
+
+```
+$ vendor/bin/phpunit -c Tests/phpunit.xml --testsuite IntegrationTests
+```
+
+And you can run them all together by omitting the --testsuite flag:
 
 ```
 $ vendor/bin/phpunit -c Tests/phpunit.xml
 ```
 
-Alternately, you can start an infinite test loop by navigating to the `tests` directory and running the testloop.sh script.
-
-```
-$ cd Tests/
-$ ./testloop.sh
-```
-
-This will run the entire test suite every three seconds, allowing quick refactoring.
+Integration tests take far more time to run because they test parts of the system as they are hooked up together, while unit tests only test small parts of the system in isolation. Integration tests also use the database, which slows them down considerably.
