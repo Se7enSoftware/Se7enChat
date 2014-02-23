@@ -39,8 +39,8 @@ class PostInteractorTest extends \PHPUnit_Framework_TestCase
 
     public function setUp()
     {
-        $this->interactor = new PostInteractor(
-            new PostData);
+        $this->interactor = new PostInteractor;
+        $this->interactor->setDatabase(new PostData);
         $this->createPostTable();
     }
 

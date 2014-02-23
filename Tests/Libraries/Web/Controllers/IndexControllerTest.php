@@ -2,8 +2,6 @@
 namespace Se7enChat\Tests\Libraries\Web\Controllers;
 use Se7enChat\Libraries\Web\Controllers\IndexController;
 use Se7enChat\Libraries\Web\Presenters\IndexPresenter;
-use Se7enChat\Tests\Helpers\Mocks\MockIndexInteractor;
-use Se7enChat\Tests\Helpers\Mocks\MockUserInterface;
 
 class IndexControllerTest extends \PHPUnit_Framework_TestCase
 {

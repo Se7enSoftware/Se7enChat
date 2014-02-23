@@ -7,7 +7,7 @@ class PostInteractor implements PostInputPort
 {
     private $database;
 
-    public function __construct(PostDataGateway $database)
+    public function setDatabase(PostDataGateway $database)
     {
         $this->database = $database;
     }
