@@ -1,4 +1,4 @@
-@lightText = #888;
+@lightText = #ccc;
 @darkText = #555;
 @whiteText = #eee;
 @borderRadius: 6px;
@@ -7,8 +7,18 @@
 @import 'animations.less';
 
 .shadow {
-    -webkit-box-shadow: 0 0 5px 1px #333333;
-    box-shadow: 0 0 5px 1px #333333;
+    -webkit-box-shadow: 0 0 5px 1px #eee;
+    box-shadow: 0 0 5px 1px #eee;
+}
+
+select {
+    border: 0;
+    padding: 3px;
+    background: url(../Images/transparent-background.png) repeat;
+    color: @whiteText;
+}
+option {
+    color: @darkText;
 }
 
 body {
@@ -16,6 +26,7 @@ body {
     padding: 0;
     color: #333;
     font-family: arial;
+    background: url(../Images/dark-textured-background.png) repeat;
 }
 
 #headerBar {
@@ -24,59 +35,37 @@ body {
     right: 0;
     left: 0;
     height: 30px;
-    .blueGradientReversed;
 }
 
-.room {
-    display: block;
-    float: left;
-    margin: 5px 0 0 10px;
-    line-height: 25px;
-    padding: 0 10px;
-    color: @lightText;
-    font-size: 12px;
-    font-weight: bold;
-    -webkit-border-radius: 6px 6px 0 0;
-    border-radius: 6px 6px 0 0;
-    .verticalWhiteGradient;
-    cursor: pointer;
-}
-.room:hover {
-    -webkit-transition: text-shadow 300ms ease;
-    -moz-transition: text-shadow 300ms ease;
-    -ms-transition: text-shadow 300ms ease;
-    -o-transition: text-shadow 300ms ease;
-    transition: text-shadow 300ms ease;
-    text-shadow: 0 0 1px @lightText;
-}
-.room.selected {
-    color: @whiteText;
-    .blueGradient;
-    -webkit-box-shadow: 0 0 1px 0 #FFFFFF;
-    box-shadow: 0 0 1px 0 #FFFFFF;
-}
-.room.selected:hover {
-    -webkit-transition: text-shadow 300ms ease;
-    -moz-transition: text-shadow 300ms ease;
-    -ms-transition: text-shadow 300ms ease;
-    -o-transition: text-shadow 300ms ease;
-    transition: text-shadow 300ms ease;
-    text-shadow: 0 0 1px #FFFFFF;
+#rooms {
+    text-align: center;
+
+    #roomSelection {
+        display: block;
+        float: left;
+    }
+
+    #roomTitle {
+        display: inline;
+        padding: 0;
+        font-size: 15px;
+        font-weight: bold;
+        color: @lightText;
+    }
 }
 
 #posts {
     position: absolute;
     top: 30px;
-    right: 16px;
+    right: 0;
     bottom: 40px;
     left: 0;
     overflow: auto;
-    .whiteGradient;
 
     .post {
         position: relative;
         padding: 30px 8px 5px 8px;
-        border-bottom: 2px dashed #aaa;
+        border-bottom: 1px dashed #aaa;
 
         .postHeader {
             position: absolute;
@@ -86,7 +75,7 @@ body {
             padding: 0 5px;
             line-height: 25px;
             font-size: 12px;
-            color: @darkText;
+            color: @lightText;
 
             #controlIcons {
                 float: right;
@@ -96,19 +85,15 @@ body {
 
         .postBody {
             color: @lightText;
+            font-size: 12px;
         }
     }
 }
 
 #sideSlider {
     position: absolute;
-    top: 30px;
-    right: 0;
-    bottom: 40px;
-    width: 15px;
-    border-left: 1px solid #aaa;
-    cursor: pointer;
-    background: #e4e4e4 url(../Images/side-slider-arrow.png) center center no-repeat;
+    top: 5px;
+    right: 5px;
 }
 
 #footerBar {
@@ -117,44 +102,54 @@ body {
     bottom: 0;
     left: 0;
     height: 40px;
-    .blueGradient;
 
     #inputContainer {
         position: absolute;
         top: 5px;
         left: 5px;
-        width: 75%;
+        right: 52px;
         height: 30px;
         padding: 0;
         border: 0;
         border-radius: @borderRadius;
         .shadow;
 
-        #messageBar {
-            outline: none;
-            display: table-cell;
-            vertical-align: middle;
-            width: 89%;
-            height: 30px;
-            margin: 0;
-            padding: 0 0 0 1%;
-            border: 0;
-            border-radius: @borderRadius 0 0 @borderRadius;
-            .whiteGradient;
-            color: @lightText;
+        #textContainer {
+            position: absolute;
+            top: 0;
+            right: 80px;
+            bottom: 0;
+            left: 0;
+
+            #messageBar {
+                outline: none;
+                display: table-cell;
+                vertical-align: middle;
+                width: 99%;
+                height: 30px;
+                margin: 0;
+                padding: 0 0 0 1%;
+                border: 0;
+                border-radius: @borderRadius 0 0 @borderRadius;
+                background: url(../Images/transparent-background.png) repeat;
+                color: @lightText;
+            }
         }
 
         #messageButton {
             display: table-cell;
             vertical-align: middle;
-            float: right;
-            width: 10%;
-            height: 30px;
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            width: 80px;
             margin: 0;
             padding: 0;
             border: 0;
+            border-left: 1px solid #eee;
             border-radius: 0 @borderRadius @borderRadius 0;
-            .blueGradient;
+            background: url(../Images/transparent-background.png) repeat;
             color: @whiteText;
             font-size: 12px;
             font-weight: bold;
@@ -171,22 +166,12 @@ body {
         }
     }
 
-    #userInformation {
-        line-height: 40px;
-        font-size: 12px;
-        font-weight: bold;
-        color: @whiteText;
-        .textShadow;
+    #avatar {
         float: right;
-        cursor: pointer;
-
-        #avatar {
-            float: right;
-            width: 32px;
-            height: 32px;
-            margin: 4px 10px 0 10px;
-            border-radius: @borderRadius;
-        }
+        width: 32px;
+        height: 32px;
+        margin: 4px 10px 0 10px;
+        border-radius: @borderRadius;
     }
 }
 

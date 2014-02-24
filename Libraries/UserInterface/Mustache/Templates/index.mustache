@@ -12,17 +12,24 @@
             var userName = '((userName))';
         </script>
     </head>
-    <body  ng-controller="PostsController">
-        <div id="headerBar">
-            ((# rooms ))
-                <div class="room ((selected))">((name))</div>
-            ((/ rooms ))
+    <body>
+        <div id="sideSlider">
+            <img src="((imageUrl))/panel-slide.png" alt="" />
         </div>
-        <div id="posts">
+        <div id="rooms">
+            <span id="roomTitle">Room 1</span>
+            <select id="roomSelection">
+                ((# rooms ))
+                    <option>((name))</option>
+                ((/ rooms ))
+            </select>
+        </div>
+
+        <div id="posts" ng-controller="PostsController">
             <div class="post" ng-repeat="post in posts" data-ng-animate="'post-animate'">
                 <div class="postHeader">
                     <div id="controlIcons">
-                        <img id="delete" src="((imageUrl))/delete.png" />
+                        X((! Temporary icon replacement. ))
                     </div>
                     <strong>{{post.userName}}</strong> | {{post.timestamp}}
                     <div class="controls"></div>
@@ -32,21 +39,19 @@
                 </div>
             </div>
         </div>
-        <div id="sideSlider"></div>
         <div id="footerBar">
-            <div id="userInformation">
-                <img id="avatar" src="http://i.imgur.com/NKTRRtZ.png">
-                ((userName))
-            </div>
+            <img id="avatar" src="http://i.imgur.com/NKTRRtZ.png">
+            
             <div id="inputContainer">
                 <form ng-submit="addPost()">
                     <input type="submit" id="messageButton" value="Send">
-                    <input
-                        type="text"
-                        id="messageBar"
-                        placeholder="Type here, then press enter."
-                        ng-model="postText"
-                    >
+                    <div id="textContainer">
+                        <input
+                            type="text"
+                            id="messageBar"
+                            placeholder="Type here, then press enter."
+                            ng-model="postText">
+                    </div>
                 </form>
             </div>
         </div>
