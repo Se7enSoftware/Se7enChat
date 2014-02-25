@@ -2,6 +2,7 @@
 namespace Se7enChat\Tests\Interactors;
 use Se7enChat\Interactors\PostInteractor;
 use Se7enChat\Libraries\Database\Test\PostData;
+use Se7enChat\Libraries\Web\DependencyBuilders\PostDependencyBuilder;
 
 class PostInteractorTest extends \PHPUnit_Framework_TestCase
 {
@@ -9,8 +10,16 @@ class PostInteractorTest extends \PHPUnit_Framework_TestCase
 
     public function setUp()
     {
+        $dependencyBuilder = $this->getMock(
+            'Se7enChat\Libraries\Web\DependencyBuilders\PostDependencyBuilder',
+            array('getNewDatabase'));
+
+        $dependencyBuilder->expects($this->any())
+            ->method('getNewDatabase')
+            ->will($this->returnValue(new PostData));
+
         $this->interactor = new PostInteractor;
-        $this->interactor->setDatabase(new PostData);
+        $this->interactor->setDependencies($dependencyBuilder);
     }
 
     public function tearDown()

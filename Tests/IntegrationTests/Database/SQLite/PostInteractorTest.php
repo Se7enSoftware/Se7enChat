@@ -2,6 +2,7 @@
 namespace Se7enChat\Tests\IntegrationTests\Database\SQLite;
 use Se7enChat\Interactors\PostInteractor;
 use Se7enChat\Libraries\Database\SQLite\PostData;
+use Se7enChat\Libraries\Web\DependencyBuilders\PostDependencyBuilder;
 use PDO;
 
 class PostInteractorTest extends \PHPUnit_Framework_TestCase
@@ -40,7 +41,8 @@ class PostInteractorTest extends \PHPUnit_Framework_TestCase
     public function setUp()
     {
         $this->interactor = new PostInteractor;
-        $this->interactor->setDatabase(new PostData);
+        $this->interactor->setDependencies(
+            new PostDependencyBuilder);
         $this->createPostTable();
     }
 

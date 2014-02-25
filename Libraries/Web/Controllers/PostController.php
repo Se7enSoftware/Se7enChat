@@ -1,6 +1,7 @@
 <?php
 namespace Se7enChat\Libraries\Web\Controllers;
 use Se7enChat\Boundaries\PostInputPort;
+use Se7enChat\Libraries\Web\DependencyBuilders\PostDependencyBuilder;
 
 class PostController
 {
@@ -9,6 +10,8 @@ class PostController
     public function __construct(PostInputPort $interactor)
     {
         $this->interactor = $interactor;
+        $this->interactor->setDependencies(
+            $this->getInteractorDependencyBuilder());
     }
 
     public function savePost()
@@ -26,5 +29,11 @@ class PostController
     private function allPostValuesAreSet()
     {
         return isset($_POST['user_id'], $_POST['room_id'], $_POST['text']);
+    }
+
+    private function getInteractorDependencyBuilder()
+    {
+        // This can be mocked out for testing.
+        return new PostDependencyBuilder;
     }
 }

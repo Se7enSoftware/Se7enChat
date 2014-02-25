@@ -2,14 +2,17 @@
 namespace Se7enChat\Interactors;
 use Se7enChat\Gateways\PostDataGateway;
 use Se7enChat\Boundaries\PostInputPort;
+use Se7enChat\Interactors\DependencyContracts\PostDependencyContract;
 
 class PostInteractor implements PostInputPort
 {
     private $database;
+    private $dependencies;
 
-    public function setDatabase(PostDataGateway $database)
+    public function setDependencies(PostDependencyContract $dependencies)
     {
-        $this->database = $database;
+        $this->dependencies = $dependencies;
+        $this->database = $this->dependencies->getNewDatabase();
     }
 
     public function savePost(array $postInfo)

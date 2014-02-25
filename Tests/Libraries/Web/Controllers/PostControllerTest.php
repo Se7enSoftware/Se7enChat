@@ -12,8 +12,6 @@ class PostControllerTest extends \PHPUnit_Framework_TestCase
     {
         $this->interactor = $this->getMock(
             '\Se7enChat\Interactors\PostInteractor');
-        $this->interactor->setDatabase(
-            new PostData);
         $this->controller = new PostController(
             $this->interactor);
     }
