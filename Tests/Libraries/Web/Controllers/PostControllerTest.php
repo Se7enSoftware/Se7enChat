@@ -1,24 +1,24 @@
 <?php
 namespace Se7enChat\Tests\Libraries\Web\Controllers;
 use Se7enChat\Libraries\Web\Controllers\PostController;
-use Se7enChat\Interactors\PostInteractor;
 use Se7enChat\Libraries\Database\Test\PostData;
 
 class PostControllerTest extends \PHPUnit_Framework_TestCase
 {
     private $controller;
+    private $interactor;
 
     public function setUp()
     {
         $this->interactor = $this->getMock(
-            '\Se7enChat\Interactors\PostInteractor');
+            'Se7enChat\Interactors\PostInteractor');
         $this->controller = new PostController(
             $this->interactor);
     }
 
     public function tearDown()
     {
-        unset($this->controller);
+        unset($this->controller, $this->interactor);
     }
 
     public static function setUpBeforeClass()
