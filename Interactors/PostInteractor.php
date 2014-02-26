@@ -1,6 +1,5 @@
 <?php
 namespace Se7enChat\Interactors;
-use Se7enChat\Gateways\PostDataGateway;
 use Se7enChat\Boundaries\PostInputPort;
 use Se7enChat\Interactors\DependencyContracts\PostDependencyContract;
 

@@ -2,7 +2,6 @@
 namespace Se7enChat\Tests\Interactors;
 use Se7enChat\Interactors\PostInteractor;
 use Se7enChat\Libraries\Database\Test\PostData;
-use Se7enChat\Libraries\Web\DependencyBuilders\PostDependencyBuilder;
 
 class PostInteractorTest extends \PHPUnit_Framework_TestCase
 {
@@ -39,14 +38,14 @@ class PostInteractorTest extends \PHPUnit_Framework_TestCase
     {
         $post = $this->getFakeInputPostData(1);
         $this->interactor->savePost($post);
-        $this->assertNotEmpty(
-            $this->interactor->getPostById(1));
+        $post = $this->interactor->getPostById(1);
+        $this->assertEquals(1, $post['id']);
     }
 
     public function testDoesGetPostById()
     {
         $post = $this->interactor->getPostById(1);
-        $this->assertEquals($post['id'], 1);
+        $this->assertEquals(1, $post['id']);
     }
 
     public function testDoesGetPostsWithIdGreaterThanThatWhichIsGiven()
