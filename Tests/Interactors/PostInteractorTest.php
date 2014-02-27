@@ -1,7 +1,6 @@
 <?php
 namespace Se7enChat\Tests\Interactors;
 use Se7enChat\Interactors\PostInteractor;
-use Se7enChat\Libraries\Database\Test\PostData;
 
 class PostInteractorTest extends \PHPUnit_Framework_TestCase
 {
@@ -10,12 +9,14 @@ class PostInteractorTest extends \PHPUnit_Framework_TestCase
     public function setUp()
     {
         $dependencyBuilder = $this->getMock(
-            'Se7enChat\Libraries\Web\DependencyBuilders\PostDependencyBuilder',
-            array('getNewDatabase'));
+            'Se7enChat\Libraries\Web\DependencyBuilders\PostDependencyBuilder');
+
+        $this->database = $this->getMock(
+            'Se7enChat\Libraries\Database\Test\PostData');
 
         $dependencyBuilder->expects($this->any())
             ->method('getNewDatabase')
-            ->will($this->returnValue(new PostData));
+            ->will($this->returnValue($this->database));
 
         $this->interactor = new PostInteractor;
         $this->interactor->setDependencies($dependencyBuilder);
@@ -34,41 +35,36 @@ class PostInteractorTest extends \PHPUnit_Framework_TestCase
         );
     }
 
-    public function testDoesSavePost()
+    public function testDoesCallSavePostOnDatabaseAbstraction()
     {
-        $post = $this->getFakeInputPostData(1);
-        $this->interactor->savePost($post);
-        $post = $this->interactor->getPostById(1);
-        $this->assertEquals(1, $post['id']);
+        $this->database->expects($this->any())
+            ->method('savePost')
+            ->with(array());
+        $this->interactor->savePost($info = array());
     }
 
-    public function testDoesGetPostById()
+    public function testDoesCallGetPostByIdOnDatabaseAbstraction()
     {
+        $this->database->expects($this->any())
+            ->method('getPostById')
+            ->with(1);
         $post = $this->interactor->getPostById(1);
-        $this->assertEquals(1, $post['id']);
     }
 
-    public function testDoesGetPostsWithIdGreaterThanThatWhichIsGiven()
+    public function testDoesCallGetPostsWithIdGreaterThan()
     {
+        $this->database->expects($this->any())
+            ->method('getPostsWithIdGreaterThan')
+            ->with(1);
         $posts = $this->interactor->getPostsWithIdGreaterThan(1);
-        foreach($posts as $post) {
-            $this->assertTrue($post['id'] > 1);
-        }
     }
 
-    public function testDoesDeletePostById()
+    public function testDoesCallDeletePost()
     {
-        $this->interactor->deletePostById(1337);
-        $post = $this->interactor->getPostById(1337);
-        $this->assertTrue($post === array());
-    }
 
-    public function getFakeInputPostData($id)
-    {
-        return array(
-            'roomId' => $id,
-            'userId' => 1,
-            'text' => sprintf('Post %d', $id)
-        );
+        $this->database->expects($this->any())
+            ->method('deletePostById')
+            ->with(1);
+        $this->interactor->deletePostById(1);
     }
 }
