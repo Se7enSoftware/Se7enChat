@@ -1,6 +1,6 @@
-function PostsController($scope)
+application.service('postService', function()
 {
-    $scope.posts = [
+    this.posts = [
         {
             userName: "Guy 1",
             timestamp: "9:06:57",
@@ -21,7 +21,12 @@ function PostsController($scope)
             timestamp: "9:06:57",
             body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
         }
-    ];
+    ]
+});
+
+function PostsController($scope, postService)
+{
+    $scope.posts = postService.posts;
 
     $scope.addPost = function()
     {
