@@ -12,9 +12,9 @@ class PostInteractorTest extends \PHPUnit_Framework_TestCase
             'Se7enChat\Libraries\Web\DependencyBuilders\PostDependencyBuilder');
 
         $this->database = $this->getMock(
-            'Se7enChat\Libraries\Database\Test\PostData');
+            'Se7enChat\Libraries\Database\SQLite\PostData');
 
-        $dependencyBuilder->expects($this->any())
+        $dependencyBuilder->expects($this->once())
             ->method('getNewDatabase')
             ->will($this->returnValue($this->database));
 
@@ -37,7 +37,7 @@ class PostInteractorTest extends \PHPUnit_Framework_TestCase
 
     public function testDoesCallSavePostOnDatabaseAbstraction()
     {
-        $this->database->expects($this->any())
+        $this->database->expects($this->once())
             ->method('savePost')
             ->with(array());
         $this->interactor->savePost($info = array());
@@ -45,7 +45,7 @@ class PostInteractorTest extends \PHPUnit_Framework_TestCase
 
     public function testDoesCallGetPostByIdOnDatabaseAbstraction()
     {
-        $this->database->expects($this->any())
+        $this->database->expects($this->once())
             ->method('getPostById')
             ->with(1);
         $post = $this->interactor->getPostById(1);
@@ -53,7 +53,7 @@ class PostInteractorTest extends \PHPUnit_Framework_TestCase
 
     public function testDoesCallGetPostsWithIdGreaterThan()
     {
-        $this->database->expects($this->any())
+        $this->database->expects($this->once())
             ->method('getPostsWithIdGreaterThan')
             ->with(1);
         $posts = $this->interactor->getPostsWithIdGreaterThan(1);
@@ -62,7 +62,7 @@ class PostInteractorTest extends \PHPUnit_Framework_TestCase
     public function testDoesCallDeletePost()
     {
 
-        $this->database->expects($this->any())
+        $this->database->expects($this->once())
             ->method('deletePostById')
             ->with(1);
         $this->interactor->deletePostById(1);
