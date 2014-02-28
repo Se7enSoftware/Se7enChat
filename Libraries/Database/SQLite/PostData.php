@@ -10,7 +10,7 @@ class PostData implements PostDataGateway
     public function __construct()
     {
         try {
-            $this->database = new PDO('sqlite:' . __DIR__ . '/database.db');
+            $this->database = new PDO('sqlite:' . __DIR__ . '/database.sqlite3');
         } catch (\Exception $error) {
             exit ('Database connection error: SQLite.');
         }

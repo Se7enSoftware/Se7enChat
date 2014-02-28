@@ -14,8 +14,8 @@ class PostInteractorTest extends \PHPUnit_Framework_TestCase
 
     public function __construct()
     {
-        $this->dbPath = CHAT_ROOT . 'Libraries/Database/SQLite/database.db';
-        $this->dbCopyPath = CHAT_ROOT . 'Libraries/Database/SQLite/database_backup.db';
+        $this->dbPath = CHAT_ROOT . 'Libraries/Database/SQLite/database.sqlite3';
+        $this->dbCopyPath = CHAT_ROOT . 'Libraries/Database/SQLite/database_backup.sqlite3';
         try {
             $this->database = new PDO('sqlite:'.$this->dbPath);
         } catch (\Exception $error) {
@@ -25,15 +25,15 @@ class PostInteractorTest extends \PHPUnit_Framework_TestCase
 
     public static function setUpBeforeClass()
     {
-        $db = CHAT_ROOT . 'Libraries/Database/SQLite/database.db';
-        $copy = CHAT_ROOT . 'Libraries/Database/SQLite/database_backup.db';
+        $db = CHAT_ROOT . 'Libraries/Database/SQLite/database.sqlite3';
+        $copy = CHAT_ROOT . 'Libraries/Database/SQLite/database_backup.sqlite3';
         copy($db, $copy);
     }
 
     public static function tearDownAfterClass()
     {
-        $db = CHAT_ROOT . 'Libraries/Database/SQLite/database.db';
-        $copy = CHAT_ROOT . 'Libraries/Database/SQLite/database_backup.db';
+        $db = CHAT_ROOT . 'Libraries/Database/SQLite/database.sqlite3';
+        $copy = CHAT_ROOT . 'Libraries/Database/SQLite/database_backup.sqlite3';
         unlink($db);
         rename($copy, $db);
     }
