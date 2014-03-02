@@ -14,25 +14,12 @@ class PostControllerTest extends \PHPUnit_Framework_TestCase
             'Se7enChat\Interactors\PostInteractor');
         $this->controller = new PostController(
             $this->interactor);
+        $this->definePostValues();
     }
 
     public function tearDown()
     {
-        unset($this->controller, $this->interactor);
-    }
-
-    public static function setUpBeforeClass()
-    {
-        $_POST = array(
-            'user_id' => 1,
-            'room_id' => 1,
-            'text' => 'test post'
-        );
-    }
-
-    public static function tearDownAfterClass()
-    {
-        unset($_POST);
+        unset($this->controller, $this->interactor, $_POST);
     }
 
     public function testCallsSavePostOnInteractor()
@@ -43,10 +30,43 @@ class PostControllerTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @expectedException Exception
+     * @expectedExceptionMessage Unable to save post.
      */
     public function testSavePostThrowsExceptionWhenThereAreNoPostValues()
     {
-        unset($_POST['user_id'], $_POST['room_id'], $_POST['text']);
+        $this->unsetPostValues();
         $this->controller->savePost();
+    }
+
+    public function testCallsGetPostByIdOnInteractor()
+    {
+        $_POST['post_id'] = 1;
+        $this->interactor->expects($this->once())
+            ->method('getPostById')
+            ->with(1);
+        $this->controller->getPostById();
+    }
+
+    /**
+     * @expectedException Exception
+     * @expectedExceptionMessage No post ID given.
+     */
+    public function testThrowsExceptionWhenPostIdIsNotSet()
+    {
+        $this->controller->getPostById();
+    }
+
+    private function definePostValues()
+    {
+        $_POST = array(
+            'user_id' => 1,
+            'room_id' => 1,
+            'text' => 'test post'
+        );
+    }
+
+    private function unsetPostValues()
+    {
+        unset($_POST);
     }
 }

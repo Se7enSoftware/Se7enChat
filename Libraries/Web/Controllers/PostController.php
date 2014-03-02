@@ -26,6 +26,15 @@ class PostController
         ));
     }
 
+    public function getPostById()
+    {
+        if (!isset($_POST['post_id'])) {
+            throw new \Exception('No post ID given.');
+        }
+        $id = (int) $_POST['post_id'];
+        $this->interactor->getPostById($id);
+    }
+
     private function allPostValuesAreSet()
     {
         return isset($_POST['user_id'], $_POST['room_id'], $_POST['text']);
