@@ -25,7 +25,7 @@ class PostInteractorTest extends \PHPUnit_Framework_TestCase
 
     public function tearDown()
     {
-        unset($this->interactor);
+        unset($this->interactor, $this->database, $this->presenter);
     }
 
     public function testIsInstanceOfInputPort()
