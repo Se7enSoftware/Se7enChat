@@ -79,4 +79,14 @@ class RouterTest extends \PHPUnit_Framework_TestCase
             TestActionWithAbstractDependency::$abstractDependency
         );
     }
+
+    /**
+     * @expectedException Exception
+     * @expectedExceptionMessage Failed to route this request.
+     */
+    public function testFailsIfDidNotRoute()
+    {
+        $router = new Router(array());
+        $router->route(array());
+    }
 }

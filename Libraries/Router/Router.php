@@ -28,6 +28,9 @@ class Router
         if (in_array('default', $this->routeKeys) && !$this->didRoute) {
             $this->routeRequest($this->routes['default']);
         }
+        if (!$this->didRoute) {
+            throw new \Exception('Failed to route this request.');
+        }
     }
 
     private function routeRequest($route)
