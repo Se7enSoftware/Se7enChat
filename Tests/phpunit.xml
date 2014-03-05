@@ -12,8 +12,5 @@
             <directory suffix="Test.php">Interactors</directory>
             <directory suffix="Test.php">Libraries</directory>
         </testsuite>
-        <testsuite name="IntegrationTests">
-            <directory suffix="Test.php">IntegrationTests</directory>
-        </testsuite>
     </testsuites>
 </phpunit>

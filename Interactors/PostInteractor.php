@@ -7,11 +7,13 @@ class PostInteractor implements PostInputPort
 {
     private $database;
     private $dependencies;
+    private $presenter;
 
     public function setDependencies(PostDependencyContract $dependencies)
     {
         $this->dependencies = $dependencies;
         $this->database = $this->dependencies->getNewDatabase();
+        $this->presenter = $this->dependencies->getNewPresenter();
     }
 
     public function savePost(array $postInfo)
@@ -21,12 +23,14 @@ class PostInteractor implements PostInputPort
 
     public function getPostById($id)
     {
-        return $this->database->getPostById($id);
+        $this->presenter->outputPost(
+            $this->database->getPostById($id));
     }
 
     public function getPostsWithIdGreaterThan($id)
     {
-        return $this->database->getPostsWithIdGreaterThan($id);
+        $this->presenter->outputPosts(
+            $this->database->getPostsWithIdGreaterThan($id));
     }
 
     public function deletePostById($id)
