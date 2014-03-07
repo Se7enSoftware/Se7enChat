@@ -5,6 +5,7 @@ use Se7enChat\Libraries\Web\Presenters\IndexPresenter;
 
 class IndexControllerTest extends \PHPUnit_Framework_TestCase
 {
+    private $interactor;
     private $controller;
 
     public function setUp()

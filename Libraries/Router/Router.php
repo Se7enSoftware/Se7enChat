@@ -4,6 +4,7 @@ namespace Se7enChat\Libraries\Router;
 class Router
 {
     private $routes;
+    private $routeKeys;
     private $dependencies = array();
     private $didRoute;
 

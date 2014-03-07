@@ -6,6 +6,7 @@ class RoomInteractorTest extends \PHPUnit_Framework_TestCase
 {
     private $room;
     private $interactor;
+    private $database;
 
     public function setUp()
     {

@@ -4,6 +4,8 @@ use Se7enChat\Gateways\UserInterfaceGateway;
 
 class MustacheShell implements UserInterfaceGateway
 {
+    private $engine;
+    
     public function __construct()
     {
         $templateDirectory = sprintf('%s/Templates', __DIR__);
