@@ -1,1 +1,4 @@
 default: 'Se7enChat\Libraries\Web\Controllers\IndexController->main'
+post:
+    add: 'Se7enChat\Libraries\Web\Controllers\PostController->savePost'
+    get: 'Se7enChat\Libraries\Web\Controllers\PostController->getPostById'

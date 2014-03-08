@@ -15,4 +15,9 @@ $dependencies = $yamlParser->parse(file_get_contents('dependencies.yaml'));
 
 $router = new Router($routes);
 $router->setDependencies($dependencies);
-$router->route($_GET);
+try {
+	$router->route($_GET);
+} catch (Exception $error) {
+	print ('Error: ' . $error->getMessage());
+}
+
