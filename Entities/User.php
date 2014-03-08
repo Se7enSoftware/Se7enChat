@@ -3,6 +3,7 @@ namespace Se7enChat\Entities;
 
 class User
 {
+    private $id;
     private $name;
     private $email;
     private $avatar;
