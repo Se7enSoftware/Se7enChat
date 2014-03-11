@@ -1,2 +1,3 @@
+Libraries/Database/SQLite/database.sqlite3
 vendor/
 composer.lock
