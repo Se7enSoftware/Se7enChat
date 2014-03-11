@@ -20,12 +20,12 @@ class PostData implements PostDataGateway
     {
         $sql = '
             INSERT INTO posts (user_id, room_id, text)
-            VALUES (:userId, :roomId, :text)';
+            VALUES (:user_id, :room_id, :text)';
         $transaction = $this->database->prepare($sql);
-        $transaction->bindParam(':userId', $postInfo['userId'], PDO::PARAM_INT);
-        $transaction->bindParam(':roomId', $postInfo['roomId'], PDO::PARAM_INT);
+        $transaction->bindParam(':user_id', $postInfo['user_id'], PDO::PARAM_INT);
+        $transaction->bindParam(':room_id', $postInfo['room_id'], PDO::PARAM_INT);
         $transaction->bindParam(':text', $postInfo['text'], PDO::PARAM_STR);
-        $transaction->execute();
+        $result = $transaction->execute();
         $transaction->closeCursor();
     }
 

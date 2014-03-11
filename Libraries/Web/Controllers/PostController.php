@@ -6,43 +6,59 @@ use Se7enChat\Libraries\Web\DependencyBuilders\PostDependencyBuilder;
 class PostController
 {
     private $interactor;
+    private $ajaxData;
 
     public function __construct(PostInputPort $interactor)
     {
         $this->interactor = $interactor;
-        $this->interactor->setDependencies(
-            $this->getInteractorDependencyBuilder());
     }
 
     public function savePost()
     {
+        $this->ensureProperDependencies();
         if (!$this->allPostValuesAreSet()) {
             throw new \Exception('Unable to save post.');
         }
         $this->interactor->savePost(array(
-            'user_id' => (int) $_POST['user_id'],
-            'room_id' => (int) $_POST['room_id'],
-            'text' => $_POST['text']
+            'user_id' => (int) $this->ajaxData->user_id,
+            'room_id' => (int) $this->ajaxData->room_id,
+            'text' => $this->ajaxData->text
         ));
     }
 
     public function getPostById()
     {
-        if (!isset($_POST['post_id'])) {
+        $this->ensureProperDependencies();
+        if (!isset($this->ajaxData->post_id)) {
             throw new \Exception('No post ID given.');
         }
-        $id = (int) $_POST['post_id'];
+        $id = (int) $this->ajaxData->post_id;
         $this->interactor->getPostById($id);
+    }
+
+    protected function getInteractorDependencyBuilder()
+    {
+        // This can be mocked out for testing.
+        return new PostDependencyBuilder;
+    }
+
+    protected function getAjaxData()
+    {
+        return json_decode(file_get_contents('php://input'));
     }
 
     private function allPostValuesAreSet()
     {
-        return isset($_POST['user_id'], $_POST['room_id'], $_POST['text']);
+        return isset(
+            $this->ajaxData->user_id,
+            $this->ajaxData->room_id,
+            $this->ajaxData->text);
     }
 
-    private function getInteractorDependencyBuilder()
+    private function ensureProperDependencies()
     {
-        // This can be mocked out for testing.
-        return new PostDependencyBuilder;
+        $this->ajaxData = $this->getAjaxData();
+        $this->interactor->setDependencies(
+            $this->getInteractorDependencyBuilder());
     }
 }

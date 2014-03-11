@@ -1,40 +1,47 @@
-application.service('postService', function()
+var application = angular.module('Se7enChat', ['ngAnimate']);
+
+application.service('postService', function($http)
 {
-    this.posts = [
-        {
-            userName: "Guy 1",
-            timestamp: "9:06:57",
-            body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
-        },
-        {
-            userName: "Guy 2",
-            timestamp: "9:06:57",
-            body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
-        },
-        {
-            userName: "Guy 1",
-            timestamp: "9:06:57",
-            body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
-        },
-        {
-            userName: "Guy 2",
-            timestamp: "9:06:57",
-            body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
-        }
-    ]
+    this.posts = [];
+
+    this.getPostById = function(id)
+    {
+        return $http.post('./index.php?post=get', {post_id: id}).success(
+            function(response)
+            {
+                console.log(response);
+            }
+        );
+    }
+
+    this.savePost = function(info)
+    {
+        $http.post('./index.php?post=add', info).success(
+            function(response)
+            {
+                console.log(response);
+            }
+        );
+    }
 });
 
-function PostsController($scope, postService)
+application.controller('PostsController', function ($scope, $http, postService)
 {
     $scope.posts = postService.posts;
 
     $scope.addPost = function()
     {
+        var messageText = $scope.postText;
         $scope.posts.push({
-            userName: userName,
+            userName: user_name,
             timestamp: '9:06:57',
-            body: $scope.postText
+            body: messageText
         });
         $scope.postText = '';
+        postService.savePost({
+            user_id: user_id,
+            room_id: 1,
+            text: messageText
+        });
     }
-}
+});

@@ -25,7 +25,8 @@ class IndexPresenter implements IndexOutputPort
             'cssUrl' => PUBLIC_ROOT . '/Styles',
             'javascriptUrl' => PUBLIC_ROOT . '/Scripts',
             'imageUrl' => PUBLIC_ROOT . '/Images',
-            'userName' => 'Francisco',
+            'user_name' => 'Francisco',
+            'user_id' => 1,
             'rooms' => array(
                 array('name' => 'Room 1'),
                 array('name' => 'Room 2', 'selected' => 'selected')
