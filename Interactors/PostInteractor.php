@@ -27,6 +27,12 @@ class PostInteractor implements PostInputPort
             $this->database->getPostById($id));
     }
 
+    public function getLastPostId()
+    {
+        $this->presenter->outputPostId(
+            $this->database->getLastPostId());
+    }
+
     public function getPostsWithIdGreaterThan($id)
     {
         $this->presenter->outputPosts(

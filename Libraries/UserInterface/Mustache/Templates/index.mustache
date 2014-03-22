@@ -1,4 +1,4 @@
-{{=(( ))=}} ((! Change the tagth to avoid conflict'th with Angular.j'eth ))
+{{=(( ))=}}
 <!DOCTYPE html>
 <html ng-app="Se7enChat">
     <head>
@@ -7,8 +7,8 @@
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.8/angular.min.js"></script>
         <script src="http://code.angularjs.org/1.2.8/angular-animate.min.js"></script>
         <script type="text/javascript">
-            var application = angular.module('Se7enChat', ['ngAnimate']);
-            var userName = '((userName))';
+            var user_name = '((user_name))';
+            var user_id = ((user_id));
         </script>
         <script src="((javascriptUrl))/index.js"></script>
     </head>
@@ -22,34 +22,36 @@
             </select>
         </div>
 
-        <div id="posts" ng-controller="PostsController">
-            <div class="post" ng-repeat="post in posts" data-ng-animate="'post-animate'">
-                <div class="postHeader">
-                    <div id="controlIcons">
-                        <img src="((imageUrl))/delete.png" alt="delete" />
+        <div ng-controller="PostsController">
+            <div id="posts">
+                <div class="post" ng-repeat="post in posts" data-ng-animate="'post-animate'">
+                    <div class="postHeader">
+                        <div id="controlIcons">
+                            <img src="((imageUrl))/delete.png" alt="delete" />
+                        </div>
+                        <strong>{{post.user_name}}</strong> | {{post.timestamp}}
+                        <div class="controls"></div>
                     </div>
-                    <strong>{{post.userName}}</strong> | {{post.timestamp}}
-                    <div class="controls"></div>
-                </div>
-                <div class="postBody">
-                    {{post.body}}
+                    <div class="postBody">
+                        {{post.body}}
+                    </div>
                 </div>
             </div>
-        </div>
-        <div id="footerBar" ng-controller="PostsController">
-            <img id="avatar" src="((imageUrl))/default-avatar.png">
-            
-            <div id="inputContainer">
-                <form ng-submit="addPost()">
-                    <input type="submit" id="messageButton" value="Send">
-                    <div id="textContainer">
-                        <input
-                            type="text"
-                            id="messageBar"
-                            placeholder="Type here, then press enter."
-                            ng-model="postText">
-                    </div>
-                </form>
+            <div id="footerBar">
+                <img id="avatar" src="((imageUrl))/default-avatar.png">
+
+                <div id="inputContainer">
+                    <form ng-submit="addPost()">
+                        <input type="submit" id="messageButton" value="Send">
+                        <div id="textContainer">
+                            <input
+                                type="text"
+                                id="messageBar"
+                                placeholder="Type here, then press enter."
+                                ng-model="postText">
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
     </body>

@@ -39,6 +39,12 @@ class PostPresenterTest extends \PHPUnit_Framework_TestCase
         $this->expectOutputString(json_encode($postArray));
     }
 
+    public function testOuputsPostId()
+    {
+        $this->presenter->outputPostId(1);
+        $this->expectOutputString(json_encode(array('post_id' => 1)));
+    }
+
     private function getPostArray()
     {
         return array(

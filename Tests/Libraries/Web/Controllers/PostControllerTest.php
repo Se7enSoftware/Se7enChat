@@ -1,7 +1,5 @@
 <?php
 namespace Se7enChat\Tests\Libraries\Web\Controllers;
-use Se7enChat\Libraries\Web\Controllers\PostController;
-use Se7enChat\Libraries\Database\Test\PostData;
 
 class PostControllerTest extends \PHPUnit_Framework_TestCase
 {
@@ -12,14 +10,12 @@ class PostControllerTest extends \PHPUnit_Framework_TestCase
     {
         $this->interactor = $this->getMock(
             'Se7enChat\Interactors\PostInteractor');
-        $this->controller = new PostController(
-            $this->interactor);
-        $this->definePostValues();
+        $this->controller = $this->getNewController();
     }
 
     public function tearDown()
     {
-        unset($this->controller, $this->interactor, $_POST);
+        unset($this->controller, $this->interactor);
     }
 
     public function testCallsSavePostOnInteractor()
@@ -34,13 +30,12 @@ class PostControllerTest extends \PHPUnit_Framework_TestCase
      */
     public function testSavePostThrowsExceptionWhenThereAreNoPostValues()
     {
-        $this->unsetPostValues();
-        $this->controller->savePost();
+        $controller = $this->getNewController($emptyAjaxValues = true);
+        $controller->savePost();
     }
 
     public function testCallsGetPostByIdOnInteractor()
     {
-        $_POST['post_id'] = 1;
         $this->interactor->expects($this->once())
             ->method('getPostById')
             ->with(1);
@@ -53,20 +48,55 @@ class PostControllerTest extends \PHPUnit_Framework_TestCase
      */
     public function testThrowsExceptionWhenPostIdIsNotSet()
     {
-        $this->controller->getPostById();
+        $controller = $this->getNewController($emptyAjaxData = true);
+        $controller->getPostById();
     }
 
-    private function definePostValues()
+    public function testGetsLastPostId()
     {
-        $_POST = array(
-            'user_id' => 1,
-            'room_id' => 1,
-            'text' => 'test post'
-        );
+        $this->interactor->expects($this->once())
+            ->method('getLastPostId');
+        $this->controller->getLastPostId();
     }
 
-    private function unsetPostValues()
+    /**
+     * @expectedException Exception
+     * @expectedExceptionMessage No post ID given.
+     */
+    public function testThrowsExceptionNoIdIsGiven()
     {
-        unset($_POST);
+        $controller = $this->getNewController($emptyAjaxData = true);
+        $controller->getPostsWithIdGreaterThan();
+    }
+
+    public function testGetsPostsWithIdGreaterThanId()
+    {
+        $this->interactor->expects($this->once())
+            ->method('getPostsWithIdGreaterThan');
+        $this->controller->getPostsWithIdGreaterThan();
+    }
+
+    private function getNewController($emptyAjaxData=false)
+    {
+        $controller = $this->getMock(
+            'Se7enChat\Libraries\Web\Controllers\PostController',
+            array('getAjaxData'),
+            array($this->interactor));
+        $controller
+            ->expects($this->any())
+            ->method('getAjaxData')
+            ->will($this->returnValue(
+                $this->getPostValues($emptyAjaxData)));
+        return $controller;
+    }
+
+    private function getPostValues($empty)
+    {
+        return json_decode($empty ? '{}' : '{
+            "post_id": 1,
+            "user_id": 1,
+            "room_id": 1,
+            "text": "test post"
+        }');
     }
 }

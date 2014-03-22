@@ -1,1 +1,2 @@
-"Se7enChat\\Boundaries\\IndexInputPort": "Se7enChat\\Interactors\\IndexInteractor"
+'Se7enChat\Boundaries\IndexInputPort': 'Se7enChat\Interactors\IndexInteractor'
+'Se7enChat\Boundaries\PostInputPort': 'Se7enChat\Interactors\PostInteractor'

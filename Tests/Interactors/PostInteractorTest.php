@@ -52,6 +52,20 @@ class PostInteractorTest extends \PHPUnit_Framework_TestCase
         $this->interactor->getPostById(1);
     }
 
+    public function testGetsLastPostIdFromDatabase()
+    {
+        $this->database->expects($this->once())
+            ->method('getLastPostId');
+        $this->interactor->getLastPostId();
+    }
+
+    public function testOuputsLastPostIdViaPresenter()
+    {
+        $this->presenter->expects($this->once())
+            ->method('outputPostId');
+        $this->interactor->getLastPostId();
+    }
+
     public function testOutputsPostViaPresenter()
     {
         $this->presenter->expects($this->once())
