@@ -13,4 +13,9 @@ class PostPresenter implements PostOutputPort
 	{
 		echo json_encode($posts);
 	}
+
+	public function outputPostId($id)
+	{
+		echo json_encode(array('post_id' => $id));
+	}
 }

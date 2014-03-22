@@ -52,6 +52,30 @@ class PostControllerTest extends \PHPUnit_Framework_TestCase
         $controller->getPostById();
     }
 
+    public function testGetsLastPostId()
+    {
+        $this->interactor->expects($this->once())
+            ->method('getLastPostId');
+        $this->controller->getLastPostId();
+    }
+
+    /**
+     * @expectedException Exception
+     * @expectedExceptionMessage No post ID given.
+     */
+    public function testThrowsExceptionNoIdIsGiven()
+    {
+        $controller = $this->getNewController($emptyAjaxData = true);
+        $controller->getPostsWithIdGreaterThan();
+    }
+
+    public function testGetsPostsWithIdGreaterThanId()
+    {
+        $this->interactor->expects($this->once())
+            ->method('getPostsWithIdGreaterThan');
+        $this->controller->getPostsWithIdGreaterThan();
+    }
+
     private function getNewController($emptyAjaxData=false)
     {
         $controller = $this->getMock(

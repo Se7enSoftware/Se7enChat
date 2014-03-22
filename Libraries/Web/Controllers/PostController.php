@@ -36,6 +36,22 @@ class PostController
         $this->interactor->getPostById($id);
     }
 
+    public function getLastPostId()
+    {
+        $this->ensureProperDependencies();
+        $this->interactor->getLastPostId();
+    }
+
+    public function getPostsWithIdGreaterThan()
+    {
+        $this->ensureProperDependencies();
+        if(!isset($this->ajaxData->post_id)) {
+            throw new \Exception('No post ID given.');
+        }
+        $this->interactor->getPostsWithIdGreaterThan(
+            (int) $this->ajaxData->post_id);
+    }
+
     protected function getInteractorDependencyBuilder()
     {
         // This can be mocked out for testing.

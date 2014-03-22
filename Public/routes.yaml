@@ -2,3 +2,5 @@ default: 'Se7enChat\Libraries\Web\Controllers\IndexController->main'
 post:
     add: 'Se7enChat\Libraries\Web\Controllers\PostController->savePost'
     get: 'Se7enChat\Libraries\Web\Controllers\PostController->getPostById'
+    getLastId: 'Se7enChat\Libraries\Web\Controllers\PostController->getLastPostId'
+    getGreaterThan: 'Se7enChat\Libraries\Web\Controllers\PostController->getPostsWithIdGreaterThan'
